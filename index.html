@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYD1K | Tanks Blitz Stream</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1b1e21;
+            color: #c7d5e0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+        }
+
+        /* Шапка */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: #2a2e33;
+            border: 2px solid #4a5058;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e8a87c;
+        }
+
+        .clan {
+            font-size: 1rem;
+            color: #8b98a5;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .nickname {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #6b7a8a;
+            margin-top: 8px;
+        }
+
+        /* Карточки */
+        .card {
+            background: #26292e;
+            border: 1px solid #363c44;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b98a5;
+            margin-bottom: 15px;
+        }
+
+        /* Кнопка стрима */
+        .btn-stream {
+            display: block;
+            background: #d94f2b;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+        }
+
+        .btn-stream:hover {
+            background: #e85a35;
+        }
+
+        /* Кнопки соцсетей */
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-social {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+            min-width: 100px;
+        }
+
+        .btn-vk {
+            background: #0077ff;
+            color: white;
+        }
+        .btn-vk:hover {
+            background: #1a85ff;
+        }
+
+        .btn-tg {
+            background: #229ed9;
+            color: white;
+        }
+        .btn-tg:hover {
+            background: #2fade8;
+        }
+
+        .btn-donate {
+            background: #f2a33c;
+            color: #1b1e21;
+        }
+        .btn-donate:hover {
+            background: #f5b055;
+        }
+
+        /* Таблица статистики */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .stats-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid #363c44;
+            font-size: 0.95rem;
+        }
+
+        .stats-table td:last-child {
+            text-align: right;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .stats-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Текст */
+        .about-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #aeb8c2;
+        }
+
+        .highlight {
+            color: #e8a87c;
+            font-weight: bold;
+        }
+
+        .stream-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #4a5058;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .status-text {
+            font-size: 0.9rem;
+            color: #8b98a5;
+        }
+
+        /* Подвал */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #4a5058;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <div class="header">
+            <div class="logo">L</div>
+            <div class="clan">[LYD1K]</div>
+            <div class="nickname">2200153687779711</div>
+            <div class="subtitle">Tanks Blitz • Стример</div>
+        </div>
+
+        <!-- Блок: Смотреть стрим -->
+        <div class="card">
+            <div class="card-title">Прямой эфир</div>
+            <a href="https://live.vkvideo.ru/kiryshauni?c=1786747565" class="btn-stream" target="_blank">
+                ▶ Смотреть стрим
+            </a>
+        </div>
+
+        <!-- Блок: Обо мне -->
+        <div class="card">
+            <div class="card-title">Обо мне</div>
+            <p class="about-text">
+                Привет! Я <span class="highlight">Кирилл</span>, 22 года, из Иваново.
+                Катаю в Tanks Blitz по фану. Без пафоса и гонки за статой —
+                просто хорошее настроение и приятная компания.
+                Играю на ПК (Lesta) и Android.
+            </p>
+        </div>
+
+        <!-- Блок: Ближайший стрим -->
+        <div class="card">
+            <div class="card-title">Ближайший стрим</div>
+            <div class="stream-status">
+                <div class="status-dot"></div>
+                <span class="status-text">Сейчас не стримлю</span>
+            </div>
+            <p class="about-text" style="margin-bottom: 15px;">
+                Расписания нет — играю по настроению.
+                Но я всегда предупреждаю в Telegram за час до эфира.
+            </p>
+            <div class="social-buttons">
+                <a href="https://t.me/icybasya" class="btn-social btn-tg" target="_blank">Telegram</a>
+                <a href="https://vk.com/k.zernov" class="btn-social btn-vk" target="_blank">ВКонтакте</a>
+            </div>
+        </div>
+
+        <!-- Блок: Статистика -->
+        <div class="card">
+            <div class="card-title">Боевые данные</div>
+            <table class="stats-table">
+                <tr>
+                    <td>Боёв</td>
+                    <td>13 000+</td>
+                </tr>
+                <tr>
+                    <td>Побед</td>
+                    <td>63.7%</td>
+                </tr>
+                <tr>
+                    <td>Платформы</td>
+                    <td>ПК (Lesta) + Android</td>
+                </tr>
+                <tr>
+                    <td>Стиль игры</td>
+                    <td>По фану</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Блок: Поддержка -->
+        <div class="card">
+            <div class="card-title">Поддержать</div>
+            <p class="about-text" style="margin-bottom: 15px;">
+                Хочешь поддержать стрим? Все средства идут на прем-танки и развитие канала.
+            </p>
+            <div class="social-buttons">
+                <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank">Донат</a>
+            </div>
+        </div>
+
+        <!-- Подвал -->
+        <div class="footer">
+            LYD1K • Tanks Blitz
+        </div>
+    </div>
+</body>
+</html>
