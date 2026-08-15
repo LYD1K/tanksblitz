@@ -87,19 +87,18 @@
         }
 
         /* Блок стрима */
-        .stream-frame {
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
+        .stream-box {
             background: #1b1e21;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
             margin-bottom: 15px;
         }
 
-        .stream-frame iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-            display: block;
+        .stream-status {
+            font-size: 0.9rem;
+            color: #8b98a5;
+            margin-bottom: 15px;
         }
 
         .btn-stream {
@@ -198,31 +197,6 @@
             font-weight: bold;
         }
 
-        .stream-status {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            background: #4a5058;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .status-dot.live {
-            background: #ff3b30;
-            box-shadow: 0 0 10px #ff3b30;
-        }
-
-        .status-text {
-            font-size: 0.9rem;
-            color: #8b98a5;
-        }
-
         /* Подвал */
         .footer {
             text-align: center;
@@ -234,9 +208,6 @@
 
         /* Адаптация под телефон */
         @media (max-width: 600px) {
-            .stream-frame iframe {
-                height: 250px;
-            }
             .nickname {
                 font-size: 1.2rem;
                 letter-spacing: 2px;
@@ -265,18 +236,12 @@
         <!-- Блок: Прямой эфир -->
         <div class="card">
             <div class="card-title">Прямой эфир</div>
-            <div class="stream-frame">
-                <!-- Встроенный плеер VK Play Live -->
-                <iframe 
-                    src="https://live.vkvideo.ru/channel/kiryshauni?embed=1" 
-                    allowfullscreen
-                    allow="autoplay; encrypted-media"
-                    scrolling="no">
-                </iframe>
+            <div class="stream-box">
+                <div class="stream-status">Переходи на канал, чтобы посмотреть стрим</div>
+                <a href="https://live.vkvideo.ru/kiryshauni" class="btn-stream" target="_blank">
+                    Открыть канал
+                </a>
             </div>
-            <a href="https://live.vkvideo.ru/kiryshauni" class="btn-stream" target="_blank">
-                Открыть канал
-            </a>
         </div>
 
         <!-- Блок: Обо мне -->
@@ -290,7 +255,7 @@
             </p>
         </div>
 
-        <!-- Блок: Ближайший стрим -->
+        <!-- Блок: Когда стримлю -->
         <div class="card">
             <div class="card-title">Когда стримлю</div>
             <p class="about-text" style="margin-bottom: 15px;">
