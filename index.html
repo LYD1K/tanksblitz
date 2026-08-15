@@ -86,7 +86,22 @@
             margin-bottom: 15px;
         }
 
-        /* Кнопка стрима */
+        /* Блок стрима */
+        .stream-frame {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #1b1e21;
+            margin-bottom: 15px;
+        }
+
+        .stream-frame iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: block;
+        }
+
         .btn-stream {
             display: block;
             background: #d94f2b;
@@ -198,6 +213,11 @@
             flex-shrink: 0;
         }
 
+        .status-dot.live {
+            background: #ff3b30;
+            box-shadow: 0 0 10px #ff3b30;
+        }
+
         .status-text {
             font-size: 0.9rem;
             color: #8b98a5;
@@ -211,6 +231,25 @@
             font-size: 0.8rem;
             letter-spacing: 1px;
         }
+
+        /* Адаптация под телефон */
+        @media (max-width: 600px) {
+            .stream-frame iframe {
+                height: 250px;
+            }
+            .nickname {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+            .btn-stream {
+                font-size: 1rem;
+                padding: 12px;
+            }
+            .btn-social {
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -223,11 +262,20 @@
             <div class="subtitle">Tanks Blitz • Стример</div>
         </div>
 
-        <!-- Блок: Смотреть стрим -->
+        <!-- Блок: Прямой эфир -->
         <div class="card">
             <div class="card-title">Прямой эфир</div>
-            <a href="https://live.vkvideo.ru/kiryshauni?c=1786747565" class="btn-stream" target="_blank">
-                ▶ Смотреть стрим
+            <div class="stream-frame">
+                <!-- Встроенный плеер VK Play Live -->
+                <iframe 
+                    src="https://live.vkvideo.ru/channel/kiryshauni?embed=1" 
+                    allowfullscreen
+                    allow="autoplay; encrypted-media"
+                    scrolling="no">
+                </iframe>
+            </div>
+            <a href="https://live.vkvideo.ru/kiryshauni" class="btn-stream" target="_blank">
+                Открыть канал
             </a>
         </div>
 
@@ -244,14 +292,10 @@
 
         <!-- Блок: Ближайший стрим -->
         <div class="card">
-            <div class="card-title">Ближайший стрим</div>
-            <div class="stream-status">
-                <div class="status-dot"></div>
-                <span class="status-text">Сейчас не стримлю</span>
-            </div>
+            <div class="card-title">Когда стримлю</div>
             <p class="about-text" style="margin-bottom: 15px;">
                 Расписания нет — играю по настроению.
-                Но я всегда предупреждаю в Telegram за час до эфира.
+                Подпишись на Telegram или ВК, чтобы не пропустить эфир.
             </p>
             <div class="social-buttons">
                 <a href="https://t.me/icybasya" class="btn-social btn-tg" target="_blank">Telegram</a>
