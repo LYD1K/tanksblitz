@@ -30,6 +30,12 @@
             font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
             min-height: 100vh;
             animation: fadeIn 0.6s ease-out;
+            transition: all 0.3s;
+        }
+
+        body.light {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 50%, #f0f0f0 100%);
+            color: #333333;
         }
 
         @keyframes fadeIn {
@@ -55,6 +61,12 @@
             padding: 15px 20px;
             margin-bottom: 40px;
             border-radius: 0 0 16px 16px;
+            transition: all 0.3s;
+        }
+
+        body.light .nav {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #ddd;
         }
 
         .nav-links {
@@ -64,6 +76,7 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .nav-link {
@@ -76,9 +89,34 @@
             transition: color 0.2s;
         }
 
+        body.light .nav-link {
+            color: #555;
+        }
+
         .nav-link:hover {
             color: #e8a87c;
             background: rgba(232, 168, 124, 0.1);
+        }
+
+        .theme-btn {
+            background: #2a2e33;
+            color: #e8a87c;
+            border: 1px solid #3a4048;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.light .theme-btn {
+            background: #fff;
+            border-color: #ddd;
+            color: #e8a87c;
         }
 
         /* Шапка */
@@ -115,6 +153,13 @@
             color: #e8a87c;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+
+        body.light .logo {
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            border-color: #ddd;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .clan {
@@ -123,6 +168,10 @@
             letter-spacing: 3px;
             margin-bottom: 8px;
             font-weight: 500;
+        }
+
+        body.light .clan {
+            color: #777;
         }
 
         .nickname {
@@ -134,9 +183,17 @@
             margin-bottom: 10px;
         }
 
+        body.light .nickname {
+            color: #333;
+        }
+
         .subtitle {
             font-size: 1rem;
             color: #6b7a8a;
+        }
+
+        body.light .subtitle {
+            color: #888;
         }
 
         /* Девиз */
@@ -158,6 +215,13 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            transition: all 0.3s;
+        }
+
+        body.light .status-block {
+            background: #fff;
+            border-color: #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .status-indicator {
@@ -179,9 +243,17 @@
             color: #c7d5e0;
         }
 
+        body.light .status-text {
+            color: #333;
+        }
+
         .status-time {
             font-size: 0.85rem;
             color: #6b7a8a;
+        }
+
+        body.light .status-time {
+            color: #888;
         }
 
         /* Секции */
@@ -192,6 +264,10 @@
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 20px;
+        }
+
+        body.light .section-title {
+            color: #333;
         }
 
         /* Ленты */
@@ -217,7 +293,13 @@
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             min-height: 180px;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: all 0.3s;
+        }
+
+        body.light .h-card {
+            background: #fff;
+            border-color: #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .h-card:hover {
@@ -228,6 +310,9 @@
         .news-date { font-size: 0.8rem; color: #6b7a8a; margin-bottom: 8px; }
         .news-title { font-weight: 600; color: #e8a87c; margin-bottom: 8px; font-size: 1rem; }
         .news-text { font-size: 0.9rem; color: #aeb8c2; line-height: 1.5; }
+
+        body.light .news-text { color: #555; }
+        body.light .news-date { color: #999; }
 
         .media-card {
             flex: 0 0 280px;
@@ -240,7 +325,13 @@
             text-decoration: none;
             display: block;
             min-height: 160px;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: all 0.3s;
+        }
+
+        body.light .media-card {
+            background: #fff;
+            border-color: #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .media-card:hover {
@@ -250,7 +341,17 @@
 
         .media-date { font-size: 0.8rem; color: #6b7a8a; margin-bottom: 8px; }
         .media-title { font-weight: 600; color: #c7d5e0; margin-bottom: 8px; font-size: 1rem; }
+        body.light .media-title { color: #333; }
         .media-icon { font-size: 2rem; margin-bottom: 10px; }
+
+        .media-thumb {
+            width: 100%;
+            height: 140px;
+            background: #1b1e21;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
 
         /* Сетка */
         .grid {
@@ -269,7 +370,13 @@
             padding: 25px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             backdrop-filter: blur(10px);
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: all 0.3s;
+        }
+
+        body.light .card {
+            background: #fff;
+            border-color: #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .card:hover {
@@ -286,6 +393,8 @@
             font-weight: 600;
         }
 
+        body.light .card-title { color: #888; }
+
         /* Кнопки */
         .btn-stream {
             display: block;
@@ -299,7 +408,7 @@
             font-size: 1.1rem;
             box-shadow: 0 4px 12px rgba(217, 79, 43, 0.3);
             margin-bottom: 15px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s;
         }
 
         .btn-stream:hover {
@@ -322,7 +431,7 @@
             font-size: 0.9rem;
             font-weight: 600;
             min-width: 100px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s;
         }
 
         .btn-social:hover { transform: translateY(-2px); }
@@ -330,6 +439,7 @@
         .btn-tg { background: #229ed9; color: white; }
         .btn-donate { background: #f2a33c; color: #1b1e21; }
         .btn-write { background: #3a4048; color: #c7d5e0; }
+        body.light .btn-write { background: #e8e8e8; color: #333; }
 
         /* Таблица */
         .stats-table { width: 100%; border-collapse: collapse; }
@@ -338,6 +448,9 @@
             border-bottom: 1px solid #363c44;
             font-size: 1rem;
         }
+
+        body.light .stats-table td { border-bottom-color: #eee; }
+
         .stats-table td:last-child { text-align: right; font-weight: 600; }
         .stats-table tr:last-child td { border-bottom: none; }
 
@@ -345,12 +458,45 @@
         .stat-wins { color: #4dd0e1; }
         .stat-platforms { color: #ffffff; }
         .stat-style { color: #ab47bc; }
+        body.light .stat-platforms { color: #333; }
 
         .about-text { font-size: 1rem; line-height: 1.7; color: #aeb8c2; }
+        body.light .about-text { color: #555; }
         .highlight { color: #e8a87c; font-weight: 600; }
+
+        /* Танки */
+        .tank-list {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tank-tag {
+            padding: 10px 18px;
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #c7d5e0;
+            transition: all 0.2s;
+        }
+
+        body.light .tank-tag {
+            background: #fff;
+            border-color: #ddd;
+            color: #333;
+        }
+
+        .tank-tag:hover {
+            border-color: #e8a87c;
+            color: #e8a87c;
+            transform: translateY(-2px);
+        }
 
         /* FAQ */
         .faq-item { border-bottom: 1px solid #363c44; padding: 14px 0; }
+        body.light .faq-item { border-bottom-color: #eee; }
         .faq-item:last-child { border-bottom: none; }
 
         .faq-question {
@@ -363,6 +509,8 @@
             font-size: 0.95rem;
             padding: 5px 0;
         }
+
+        body.light .faq-question { color: #333; }
 
         .faq-arrow {
             transition: transform 0.3s;
@@ -379,6 +527,8 @@
             font-size: 0.9rem;
             line-height: 1.6;
         }
+
+        body.light .faq-answer { color: #555; }
 
         .faq-item.active .faq-arrow { transform: rotate(180deg); }
         .faq-item.active .faq-answer { max-height: 200px; padding-top: 10px; }
@@ -404,9 +554,9 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .btn-top:hover {
-            background: #3a4048;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        body.light .btn-top {
+            background: #fff;
+            border-color: #ddd;
         }
 
         .btn-top.visible { display: flex; }
@@ -444,6 +594,8 @@
             font-size: 0.85rem;
         }
 
+        body.light .footer { color: #999; }
+
         /* Адаптация */
         @media (max-width: 768px) {
             .container { padding: 20px 15px; }
@@ -463,7 +615,9 @@
             <a href="#main" class="nav-link">Главное</a>
             <a href="#news" class="nav-link">Новости</a>
             <a href="#streams" class="nav-link">Стримы</a>
+            <a href="#tanks" class="nav-link">Танки</a>
             <a href="#faq" class="nav-link">FAQ</a>
+            <button class="theme-btn" onclick="toggleTheme()">🌙</button>
         </div>
     </div>
 
@@ -481,9 +635,9 @@
 
         <!-- Статус -->
         <div class="status-block">
-            <div class="status-indicator online" id="status-indicator"></div>
+            <div class="status-indicator offline" id="status-indicator"></div>
             <div>
-                <div class="status-text" id="status-text">Сейчас онлайн</div>
+                <div class="status-text" id="status-text">Сейчас оффлайн</div>
                 <div class="status-time">Загляни позже или подпишись на Telegram</div>
             </div>
         </div>
@@ -518,6 +672,18 @@
         <div class="section" id="streams">
             <div class="section-title">Записи стримов</div>
             <div class="h-scroll" id="streams-container"></div>
+        </div>
+
+        <!-- Танки -->
+        <div class="section" id="tanks">
+            <div class="section-title">Моя техника</div>
+            <div class="tank-list">
+                <span class="tank-tag">CS-63</span>
+                <span class="tank-tag">AMX M4 Mle.</span>
+                <span class="tank-tag">Т-62А</span>
+                <span class="tank-tag">М-60</span>
+                <span class="tank-tag">Grille 15</span>
+            </div>
         </div>
 
         <!-- Статистика и поддержка -->
@@ -578,6 +744,10 @@
     <button class="btn-top" id="btnTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">▲</button>
 
     <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light');
+        }
+
         async function loadNews() {
             const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=0&single=true&output=csv&_=' + Date.now();
             try {
@@ -617,9 +787,17 @@
                         card.className = 'media-card';
                         card.href = cols[2].trim();
                         card.target = '_blank';
+                        
+                        let thumb = '';
+                        if (cols.length >= 4 && cols[3].trim()) {
+                            thumb = `<img src="${cols[3].trim()}" class="media-thumb" alt="Превью">`;
+                        } else {
+                            thumb = `<div class="media-icon">🎬</div>`;
+                        }
+                        
                         card.innerHTML = `
                             <div class="media-date">${cols[0].trim()}</div>
-                            <div class="media-icon">🎬</div>
+                            ${thumb}
                             <div class="media-title">${cols[1].trim()}</div>
                         `;
                         container.appendChild(card);
