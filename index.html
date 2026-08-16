@@ -27,15 +27,15 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: linear-gradient(135deg, #1b1f24 0%, #1a1d22 50%, #1e2228 100%);
             color: #c7d5e0;
             font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0;
             animation: fadeIn 0.6s ease-out;
         }
 
@@ -53,7 +53,45 @@
         .container {
             max-width: 1100px;
             width: 100%;
+            margin: 0 auto;
             padding: 40px 20px;
+        }
+
+        /* Меню */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(27, 31, 36, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid #2a2e33;
+            padding: 15px 20px;
+            margin-bottom: 40px;
+            border-radius: 0 0 16px 16px;
+        }
+
+        .nav-links {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #8b98a5;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .nav-link:hover {
+            color: #e8a87c;
+            background: rgba(232, 168, 124, 0.1);
         }
 
         /* Шапка */
@@ -134,7 +172,141 @@
             letter-spacing: 1px;
         }
 
-        /* Сетка для контента */
+        /* Статус */
+        .status-block {
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: fadeIn 0.6s ease-out 0.4s both;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4a5058;
+            flex-shrink: 0;
+        }
+
+        .status-indicator.offline {
+            background: #6b7280;
+        }
+
+        .status-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #c7d5e0;
+        }
+
+        .status-time {
+            font-size: 0.85rem;
+            color: #6b7a8a;
+        }
+
+        /* Секции */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Горизонтальные ленты */
+        .h-scroll {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .h-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .h-scroll::-webkit-scrollbar-track {
+            background: #1b1f24;
+            border-radius: 3px;
+        }
+
+        .h-scroll::-webkit-scrollbar-thumb {
+            background: #3a4048;
+            border-radius: 3px;
+        }
+
+        .h-scroll::-webkit-scrollbar-thumb:hover {
+            background: #4a5058;
+        }
+
+        .h-card {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            min-height: 180px;
+        }
+
+        .h-card:hover {
+            border-color: #4a5058;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        /* Новости */
+        .news-date {
+            font-size: 0.8rem;
+            color: #6b7a8a;
+            margin-bottom: 8px;
+        }
+
+        .news-title {
+            font-weight: 600;
+            color: #e8a87c;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .news-text {
+            font-size: 0.9rem;
+            color: #aeb8c2;
+            line-height: 1.5;
+        }
+
+        /* Медиа-заглушки */
+        .media-placeholder {
+            background: #1b1e21;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            color: #6b7a8a;
+            font-size: 0.9rem;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Сетка для остальных карточек */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -146,7 +318,6 @@
             grid-column: 1 / -1;
         }
 
-        /* Карточки */
         .card {
             background: rgba(38, 41, 46, 0.85);
             border: 1px solid #3a4048;
@@ -172,63 +343,7 @@
             font-weight: 600;
         }
 
-        /* Блок статуса */
-        .status-block {
-            background: rgba(38, 41, 46, 0.85);
-            border: 1px solid #3a4048;
-            border-radius: 16px;
-            padding: 20px 25px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            animation: fadeIn 0.6s ease-out 0.4s both;
-        }
-
-        .status-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #4a5058;
-            flex-shrink: 0;
-        }
-
-        .status-indicator.online {
-            background: #4ade80;
-            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
-        }
-
-        .status-indicator.offline {
-            background: #6b7280;
-        }
-
-        .status-text {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #c7d5e0;
-        }
-
-        .status-time {
-            font-size: 0.85rem;
-            color: #6b7a8a;
-        }
-
-        /* Блок стрима */
-        .stream-box {
-            background: #1b1e21;
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .stream-status {
-            font-size: 1rem;
-            color: #8b98a5;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
+        /* Кнопки */
         .btn-stream {
             display: block;
             background: linear-gradient(135deg, #d94f2b 0%, #c43d1a 100%);
@@ -242,6 +357,7 @@
             letter-spacing: 0.5px;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 12px rgba(217, 79, 43, 0.3);
+            margin-bottom: 15px;
         }
 
         .btn-stream:hover {
@@ -249,7 +365,6 @@
             box-shadow: 0 8px 20px rgba(217, 79, 43, 0.4);
         }
 
-        /* Кнопки соцсетей */
         .social-buttons {
             display: flex;
             gap: 10px;
@@ -308,7 +423,7 @@
             background: #4a5058;
         }
 
-        /* Таблица статистики */
+        /* Таблица */
         .stats-table {
             width: 100%;
             border-collapse: collapse;
@@ -330,7 +445,6 @@
             border-bottom: none;
         }
 
-        /* Текст */
         .about-text {
             font-size: 1rem;
             line-height: 1.7;
@@ -340,74 +454,6 @@
         .highlight {
             color: #e8a87c;
             font-weight: 600;
-        }
-
-        /* Новости */
-        .news-item {
-            padding: 15px 0;
-            border-bottom: 1px solid #363c44;
-        }
-
-        .news-item:last-child {
-            border-bottom: none;
-        }
-
-        .news-date {
-            font-size: 0.8rem;
-            color: #6b7a8a;
-            margin-bottom: 5px;
-        }
-
-        .news-title {
-            font-weight: 600;
-            color: #e8a87c;
-            margin-bottom: 5px;
-        }
-
-        .news-text {
-            font-size: 0.9rem;
-            color: #aeb8c2;
-            line-height: 1.5;
-        }
-
-        /* Медиа-заглушка */
-        .media-placeholder {
-            background: #1b1e21;
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            color: #6b7a8a;
-            font-size: 0.9rem;
-        }
-
-        .media-placeholder-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        /* Занятия */
-        .activity-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .activity-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #363c44;
-            font-size: 0.95rem;
-            color: #aeb8c2;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .activity-list li:last-child {
-            border-bottom: none;
-        }
-
-        .activity-icon {
-            color: #e8a87c;
-            flex-shrink: 0;
         }
 
         /* FAQ */
@@ -488,7 +534,6 @@
             40% { opacity: 0; transform: translateY(-5px); }
         }
 
-        /* Подвал */
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -497,7 +542,7 @@
             letter-spacing: 1px;
         }
 
-        /* Адаптация под телефон */
+        /* Адаптация */
         @media (max-width: 768px) {
             .container {
                 padding: 20px 15px;
@@ -529,6 +574,10 @@
                 font-size: 1.2rem;
             }
 
+            .h-card {
+                flex: 0 0 250px;
+            }
+
             .btn-stream {
                 font-size: 1rem;
                 padding: 14px;
@@ -542,7 +591,17 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Меню -->
+    <div class="nav">
+        <div class="nav-links">
+            <a href="#main" class="nav-link">Главное</a>
+            <a href="#news" class="nav-link">Новости</a>
+            <a href="#streams" class="nav-link">Стримы</a>
+            <a href="#faq" class="nav-link">FAQ</a>
+        </div>
+    </div>
+
+    <div class="container" id="main">
         <!-- Шапка -->
         <div class="header">
             <div class="logo">L</div>
@@ -565,158 +624,125 @@
             </div>
         </div>
 
-        <!-- Сетка контента -->
+        <!-- Основная сетка -->
         <div class="grid">
-            <!-- Блок: Прямой эфир -->
             <div class="card">
                 <div class="card-title">Прямой эфир</div>
-                <div class="stream-box">
-                    <div class="stream-status">Стрим идёт? Заглядывай на канал</div>
-                    <a href="https://live.vkvideo.ru/kiryshauni" class="btn-stream" target="_blank">
-                        Открыть канал
-                    </a>
-                </div>
+                <a href="https://live.vkvideo.ru/kiryshauni" class="btn-stream" target="_blank">Открыть канал</a>
+                <p class="about-text" style="text-align: center;">Стрим идёт? Заглядывай!</p>
             </div>
 
-            <!-- Блок: Обо мне -->
             <div class="card">
                 <div class="card-title">Обо мне</div>
                 <p class="about-text">
                     Привет! Я <span class="highlight">Кирилл</span>, 22 года, из Иваново.
-                    Катаю в Tanks Blitz по фану. Без пафоса и гонки за статой —
-                    просто хорошее настроение и приятная компания.
-                    Играю на ПК (Lesta) и Android.
+                    Катаю в Tanks Blitz по фану.
                 </p>
                 <div class="social-buttons" style="margin-top: 20px;">
-                    <a href="https://t.me/icybasya?text=Привет,%20LYD1K!%20Пишу%20с%20сайта." class="btn-social btn-write" target="_blank">Написать мне</a>
+                    <a href="https://t.me/icybasya?text=Привет,%20LYD1K!%20Пишу%20с%20сайта." class="btn-social btn-write" target="_blank">Написать</a>
                 </div>
             </div>
+        </div>
 
-            <!-- Блок: Когда стримлю -->
-            <div class="card">
-                <div class="card-title">Когда стримлю</div>
-                <p class="about-text" style="margin-bottom: 20px;">
-                    Расписания нет — играю по настроению.
-                    Подпишись на Telegram или ВК, чтобы не пропустить эфир.
-                </p>
-                <div class="social-buttons">
-                    <a href="https://t.me/icybasya" class="btn-social btn-tg" target="_blank">Telegram</a>
-                    <a href="https://vk.com/k.zernov" class="btn-social btn-vk" target="_blank">ВКонтакте</a>
+        <!-- Секция: Новости -->
+        <div class="section" id="news">
+            <div class="section-title">Новости</div>
+            <div class="h-scroll">
+                <div class="h-card">
+                    <div class="news-date">Август 2026</div>
+                    <div class="news-title">Сайт запущен</div>
+                    <div class="news-text">Теперь у меня есть свой уголок в интернете.</div>
+                </div>
+                <div class="h-card">
+                    <div class="news-date">Август 2026</div>
+                    <div class="news-title">Стримы по настроению</div>
+                    <div class="news-text">Подпишись на Telegram, чтобы не пропустить.</div>
+                </div>
+                <div class="h-card">
+                    <div class="news-date">Скоро</div>
+                    <div class="news-title">Игры с подписчиками</div>
+                    <div class="news-text">Планирую собрать пати из зрителей.</div>
+                </div>
+                <div class="h-card">
+                    <div class="news-date">Скоро</div>
+                    <div class="news-title">Новые записи стримов</div>
+                    <div class="news-text">Буду выкладывать лучшие моменты.</div>
                 </div>
             </div>
+        </div>
 
-            <!-- Блок: Статистика -->
+        <!-- Секция: Записи стримов -->
+        <div class="section" id="streams">
+            <div class="section-title">Записи стримов</div>
+            <div class="h-scroll">
+                <div class="h-card">
+                    <div class="media-placeholder">
+                        <div class="media-icon">🎬</div>
+                        Здесь будет запись
+                    </div>
+                </div>
+                <div class="h-card">
+                    <div class="media-placeholder">
+                        <div class="media-icon">🎬</div>
+                        Здесь будет запись
+                    </div>
+                </div>
+                <div class="h-card">
+                    <div class="media-placeholder">
+                        <div class="media-icon">🎬</div>
+                        Здесь будет запись
+                    </div>
+                </div>
+                <div class="h-card">
+                    <div class="media-placeholder">
+                        <div class="media-icon">🎬</div>
+                        Здесь будет запись
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сетка: статистика и поддержка -->
+        <div class="grid">
             <div class="card">
                 <div class="card-title">Боевые данные</div>
                 <table class="stats-table">
-                    <tr>
-                        <td>Боёв</td>
-                        <td>13 000+</td>
-                    </tr>
-                    <tr>
-                        <td>Побед</td>
-                        <td>63.7%</td>
-                    </tr>
-                    <tr>
-                        <td>Платформы</td>
-                        <td>ПК (Lesta) + Android</td>
-                    </tr>
-                    <tr>
-                        <td>Стиль игры</td>
-                        <td>По фану</td>
-                    </tr>
+                    <tr><td>Боёв</td><td>13 000+</td></tr>
+                    <tr><td>Побед</td><td>63.7%</td></tr>
+                    <tr><td>Платформы</td><td>ПК (Lesta) + Android</td></tr>
+                    <tr><td>Стиль игры</td><td>По фану</td></tr>
                 </table>
             </div>
 
-            <!-- Блок: Новости -->
-            <div class="card">
-                <div class="card-title">Новости</div>
-                <div class="news-item">
-                    <div class="news-date">Август 2026</div>
-                    <div class="news-title">Сайт запущен</div>
-                    <div class="news-text">Теперь у меня есть свой уголок в интернете. Дальше — больше.</div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">Август 2026</div>
-                    <div class="news-title">Стримы по настроению</div>
-                    <div class="news-text">Подпишись на Telegram, чтобы не пропустить эфир.</div>
-                </div>
-            </div>
-
-            <!-- Блок: Чем занимаюсь -->
-            <div class="card">
-                <div class="card-title">Чем занимаюсь</div>
-                <ul class="activity-list">
-                    <li><span class="activity-icon">🎮</span> Стримлю Tanks Blitz</li>
-                    <li><span class="activity-icon">🤝</span> Играю с подписчиками</li>
-                    <li><span class="activity-icon">💬</span> Общаюсь в чате</li>
-                    <li><span class="activity-icon">😄</span> Поднимаю настроение</li>
-                </ul>
-            </div>
-
-            <!-- Блок: Поддержка -->
             <div class="card">
                 <div class="card-title">Поддержать</div>
                 <p class="about-text" style="margin-bottom: 20px;">
-                    Поддержи стрим — хватит на дошик. Или на прем-танк. Как пойдёт.
+                    Поддержи стрим — хватит на дошик. Или на прем-танк.
                 </p>
                 <div class="social-buttons">
                     <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank">Донат</a>
                 </div>
             </div>
+        </div>
 
-            <!-- Блок: Медиа -->
-            <div class="card">
-                <div class="card-title">Записи стримов</div>
-                <div class="media-placeholder">
-                    <div class="media-placeholder-icon">🎬</div>
-                    Здесь будет запись последнего эфира
-                </div>
+        <!-- FAQ -->
+        <div class="card full-width" id="faq">
+            <div class="card-title">Частые вопросы</div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">Почему ник из цифр?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">Это номер карты. Выглядит как секретный код, согласись.</div>
             </div>
-
-            <!-- Блок: FAQ -->
-            <div class="card full-width">
-                <div class="card-title">Частые вопросы</div>
-                
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">
-                        Почему ник из цифр?
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Это номер карты. Выглядит как секретный код, согласись.
-                    </div>
-                </div>
-
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">
-                        Когда стримишь?
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        По настроению или когда появится свободное время и нервные клетки восстановятся.
-                    </div>
-                </div>
-
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">
-                        На чём играешь?
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        На ПК через Lesta Games и на Android.
-                    </div>
-                </div>
-
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">
-                        Как поддержать?
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Кнопка "Донат" выше. Даже на дошик буду рад.
-                    </div>
-                </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">Когда стримишь?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">По настроению или когда появятся время и нервные клетки.</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">На чём играешь?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">На ПК через Lesta Games и на Android.</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">Как поддержать?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">Кнопка "Донат" выше. Даже на дошик буду рад.</div>
             </div>
         </div>
 
@@ -727,7 +753,6 @@
             <span class="rotating-phrase">По фану. Без понтов.</span>
         </div>
 
-        <!-- Подвал -->
         <div class="footer">
             LYD1K • Tanks Blitz
         </div>
