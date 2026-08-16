@@ -160,20 +160,8 @@
         /* Шапка */
         .header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             position: relative;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #e8a87c, transparent);
-            border-radius: 2px;
         }
 
         .logo {
@@ -216,34 +204,38 @@
         .subtitle { font-size: 1rem; color: #6b7a8a; }
         body.light .subtitle { color: #888; }
 
-        /* Настроение */
-        .mood {
+        /* Цитата дня */
+        .quote-day {
             text-align: center;
             font-size: 1.1rem;
             color: #e8a87c;
             font-weight: 600;
-            margin: 20px 0;
+            margin: 0 auto 20px;
             font-style: italic;
+            background: rgba(38, 41, 46, 0.7);
+            border: 1px solid #3a4048;
+            border-radius: 12px;
+            padding: 15px 20px;
+            max-width: 600px;
+            transition: all 0.3s;
         }
 
-        /* Цитата дня */
-        .quote-day {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #e8a87c;
-            font-weight: 600;
-            margin: 30px 0;
-            font-style: italic;
+        body.light .quote-day {
+            background: #fff;
+            border-color: #ddd;
+            color: #d4885c;
         }
 
         /* Девиз */
         .motto {
             text-align: center;
-            font-size: 1.5rem;
-            color: #e8a87c;
-            font-weight: 600;
+            font-size: 0.95rem;
+            color: #8b98a5;
             margin-bottom: 40px;
+            letter-spacing: 0.5px;
         }
+
+        body.light .motto { color: #888; }
 
         /* Статус */
         .status-block {
@@ -544,7 +536,7 @@
             .grid { grid-template-columns: 1fr; gap: 15px; }
             .nickname { font-size: 1.5rem; letter-spacing: 3px; }
             .logo { width: 80px; height: 80px; font-size: 2.5rem; }
-            .motto { font-size: 1.2rem; }
+            .motto { font-size: 0.85rem; }
             .h-card, .media-card { flex: 0 0 250px; }
             .btn-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
             .nav-links { gap: 8px; }
@@ -580,9 +572,6 @@
             <div class="nickname">2200153687779711</div>
             <div class="subtitle">Tanks Blitz • Стример</div>
         </div>
-
-        <!-- Настроение -->
-        <div class="mood" id="mood"></div>
 
         <!-- Цитата дня -->
         <div class="quote-day" id="quoteDay"></div>
@@ -727,17 +716,6 @@
         function shareTG() {
             window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank');
         }
-
-        // Настроение
-        const moods = [
-            'Сегодня в ударе',
-            'Танки в порядке, я тоже',
-            'Настроение: боевое',
-            'Готов нагибать',
-            'Сегодня без нервов'
-        ];
-        const mood = moods[Math.floor(Math.random() * moods.length)];
-        document.getElementById('mood').textContent = mood;
 
         // Цитата дня
         const quotes = [
