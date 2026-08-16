@@ -73,7 +73,7 @@
             max-width: 1100px;
             margin: 0 auto;
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
             align-items: center;
@@ -89,9 +89,7 @@
             transition: color 0.2s;
         }
 
-        body.light .nav-link {
-            color: #555;
-        }
+        body.light .nav-link { color: #555; }
 
         .nav-link:hover {
             color: #e8a87c;
@@ -116,7 +114,6 @@
         body.light .theme-btn {
             background: #fff;
             border-color: #ddd;
-            color: #e8a87c;
         }
 
         /* Шапка */
@@ -157,22 +154,13 @@
         }
 
         body.light .logo {
-            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            background: #fff;
             border-color: #ddd;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        .clan {
-            font-size: 1.2rem;
-            color: #8b98a5;
-            letter-spacing: 3px;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        body.light .clan {
-            color: #777;
-        }
+        .clan { font-size: 1.2rem; color: #8b98a5; letter-spacing: 3px; margin-bottom: 8px; font-weight: 500; }
+        body.light .clan { color: #777; }
 
         .nickname {
             font-size: 2.5rem;
@@ -182,18 +170,19 @@
             font-family: 'Courier New', monospace;
             margin-bottom: 10px;
         }
+        body.light .nickname { color: #333; }
 
-        body.light .nickname {
-            color: #333;
-        }
+        .subtitle { font-size: 1rem; color: #6b7a8a; }
+        body.light .subtitle { color: #888; }
 
-        .subtitle {
-            font-size: 1rem;
-            color: #6b7a8a;
-        }
-
-        body.light .subtitle {
-            color: #888;
+        /* Цитата дня */
+        .quote-day {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #e8a87c;
+            font-weight: 600;
+            margin: 30px 0;
+            font-style: italic;
         }
 
         /* Девиз */
@@ -217,58 +206,20 @@
             gap: 15px;
             transition: all 0.3s;
         }
+        body.light .status-block { background: #fff; border-color: #ddd; }
 
-        body.light .status-block {
-            background: #fff;
-            border-color: #ddd;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
+        .status-indicator { width: 12px; height: 12px; border-radius: 50%; background: #6b7280; flex-shrink: 0; }
+        .status-indicator.online { background: #4ade80; box-shadow: 0 0 10px rgba(74, 222, 128, 0.5); }
 
-        .status-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #6b7280;
-            flex-shrink: 0;
-        }
-
-        .status-indicator.online {
-            background: #4ade80;
-            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
-        }
-
-        .status-text {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #c7d5e0;
-        }
-
-        body.light .status-text {
-            color: #333;
-        }
-
-        .status-time {
-            font-size: 0.85rem;
-            color: #6b7a8a;
-        }
-
-        body.light .status-time {
-            color: #888;
-        }
+        .status-text { font-size: 1rem; font-weight: 600; color: #c7d5e0; }
+        body.light .status-text { color: #333; }
+        .status-time { font-size: 0.85rem; color: #6b7a8a; }
+        body.light .status-time { color: #888; }
 
         /* Секции */
         .section { margin-bottom: 50px; }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-
-        body.light .section-title {
-            color: #333;
-        }
+        .section-title { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 20px; }
+        body.light .section-title { color: #333; }
 
         /* Ленты */
         .h-scroll {
@@ -279,7 +230,6 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
         }
-
         .h-scroll::-webkit-scrollbar { height: 6px; }
         .h-scroll::-webkit-scrollbar-track { background: #1b1f24; border-radius: 3px; }
         .h-scroll::-webkit-scrollbar-thumb { background: #3a4048; border-radius: 3px; }
@@ -295,24 +245,13 @@
             min-height: 180px;
             transition: all 0.3s;
         }
-
-        body.light .h-card {
-            background: #fff;
-            border-color: #ddd;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .h-card:hover {
-            border-color: #4a5058;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
+        body.light .h-card { background: #fff; border-color: #ddd; }
+        .h-card:hover { border-color: #4a5058; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 
         .news-date { font-size: 0.8rem; color: #6b7a8a; margin-bottom: 8px; }
         .news-title { font-weight: 600; color: #e8a87c; margin-bottom: 8px; font-size: 1rem; }
         .news-text { font-size: 0.9rem; color: #aeb8c2; line-height: 1.5; }
-
         body.light .news-text { color: #555; }
-        body.light .news-date { color: #999; }
 
         .media-card {
             flex: 0 0 280px;
@@ -327,40 +266,17 @@
             min-height: 160px;
             transition: all 0.3s;
         }
-
-        body.light .media-card {
-            background: #fff;
-            border-color: #ddd;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .media-card:hover {
-            border-color: #4a5058;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
+        body.light .media-card { background: #fff; border-color: #ddd; }
+        .media-card:hover { border-color: #4a5058; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 
         .media-date { font-size: 0.8rem; color: #6b7a8a; margin-bottom: 8px; }
         .media-title { font-weight: 600; color: #c7d5e0; margin-bottom: 8px; font-size: 1rem; }
         body.light .media-title { color: #333; }
         .media-icon { font-size: 2rem; margin-bottom: 10px; }
-
-        .media-thumb {
-            width: 100%;
-            height: 140px;
-            background: #1b1e21;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            object-fit: cover;
-        }
+        .media-thumb { width: 100%; height: 140px; background: #1b1e21; border-radius: 8px; margin-bottom: 10px; object-fit: cover; }
 
         /* Сетка */
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
         .full-width { grid-column: 1 / -1; }
 
         .card {
@@ -372,17 +288,8 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s;
         }
-
-        body.light .card {
-            background: #fff;
-            border-color: #ddd;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .card:hover {
-            border-color: #4a5058;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
+        body.light .card { background: #fff; border-color: #ddd; }
+        .card:hover { border-color: #4a5058; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 
         .card-title {
             font-size: 0.85rem;
@@ -392,7 +299,6 @@
             margin-bottom: 20px;
             font-weight: 600;
         }
-
         body.light .card-title { color: #888; }
 
         /* Кнопки */
@@ -410,18 +316,9 @@
             margin-bottom: 15px;
             transition: all 0.2s;
         }
+        .btn-stream:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(217, 79, 43, 0.4); }
 
-        .btn-stream:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(217, 79, 43, 0.4);
-        }
-
-        .social-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
+        .social-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
         .btn-social {
             flex: 1;
             text-align: center;
@@ -432,8 +329,11 @@
             font-weight: 600;
             min-width: 100px;
             transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-
         .btn-social:hover { transform: translateY(-2px); }
         .btn-vk { background: #0077ff; color: white; }
         .btn-tg { background: #229ed9; color: white; }
@@ -441,36 +341,11 @@
         .btn-write { background: #3a4048; color: #c7d5e0; }
         body.light .btn-write { background: #e8e8e8; color: #333; }
 
-        /* Таблица */
-        .stats-table { width: 100%; border-collapse: collapse; }
-        .stats-table td {
-            padding: 14px 0;
-            border-bottom: 1px solid #363c44;
-            font-size: 1rem;
-        }
-
-        body.light .stats-table td { border-bottom-color: #eee; }
-
-        .stats-table td:last-child { text-align: right; font-weight: 600; }
-        .stats-table tr:last-child td { border-bottom: none; }
-
-        .stat-battles { color: #e8a87c; }
-        .stat-wins { color: #4dd0e1; }
-        .stat-platforms { color: #ffffff; }
-        .stat-style { color: #ab47bc; }
-        body.light .stat-platforms { color: #333; }
-
-        .about-text { font-size: 1rem; line-height: 1.7; color: #aeb8c2; }
-        body.light .about-text { color: #555; }
-        .highlight { color: #e8a87c; font-weight: 600; }
+        /* Иконки */
+        .icon { width: 18px; height: 18px; flex-shrink: 0; }
 
         /* Танки */
-        .tank-list {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
+        .tank-list { display: flex; gap: 12px; flex-wrap: wrap; }
         .tank-tag {
             padding: 10px 18px;
             background: rgba(38, 41, 46, 0.85);
@@ -479,20 +354,33 @@
             font-size: 0.9rem;
             font-weight: 600;
             color: #c7d5e0;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            cursor: default;
         }
-
-        body.light .tank-tag {
-            background: #fff;
-            border-color: #ddd;
-            color: #333;
-        }
-
+        body.light .tank-tag { background: #fff; border-color: #ddd; color: #333; }
         .tank-tag:hover {
             border-color: #e8a87c;
             color: #e8a87c;
-            transform: translateY(-2px);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(232, 168, 124, 0.3);
         }
+
+        /* Таблица */
+        .stats-table { width: 100%; border-collapse: collapse; }
+        .stats-table td { padding: 14px 0; border-bottom: 1px solid #363c44; font-size: 1rem; }
+        body.light .stats-table td { border-bottom-color: #eee; }
+        .stats-table td:last-child { text-align: right; font-weight: 600; }
+        .stats-table tr:last-child td { border-bottom: none; }
+
+        .stat-battles { color: #e8a87c; }
+        .stat-wins { color: #4dd0e1; }
+        .stat-platforms { color: #ffffff; }
+        body.light .stat-platforms { color: #333; }
+        .stat-style { color: #ab47bc; }
+
+        .about-text { font-size: 1rem; line-height: 1.7; color: #aeb8c2; }
+        body.light .about-text { color: #555; }
+        .highlight { color: #e8a87c; font-weight: 600; }
 
         /* FAQ */
         .faq-item { border-bottom: 1px solid #363c44; padding: 14px 0; }
@@ -509,16 +397,9 @@
             font-size: 0.95rem;
             padding: 5px 0;
         }
-
         body.light .faq-question { color: #333; }
 
-        .faq-arrow {
-            transition: transform 0.3s;
-            color: #8b98a5;
-            margin-left: 10px;
-            font-size: 0.8rem;
-        }
-
+        .faq-arrow { transition: transform 0.3s; color: #8b98a5; margin-left: 10px; font-size: 0.8rem; }
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -527,9 +408,7 @@
             font-size: 0.9rem;
             line-height: 1.6;
         }
-
         body.light .faq-answer { color: #555; }
-
         .faq-item.active .faq-arrow { transform: rotate(180deg); }
         .faq-item.active .faq-answer { max-height: 200px; padding-top: 10px; }
 
@@ -553,12 +432,7 @@
             z-index: 99;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-
-        body.light .btn-top {
-            background: #fff;
-            border-color: #ddd;
-        }
-
+        body.light .btn-top { background: #fff; border-color: #ddd; }
         .btn-top.visible { display: flex; }
 
         /* Фразы */
@@ -570,14 +444,12 @@
             align-items: center;
             justify-content: center;
         }
-
         .rotating-phrase {
             font-size: 0.95rem;
             color: #8b98a5;
             animation: phraseFade 9s infinite;
             opacity: 0;
         }
-
         .rotating-phrase:nth-child(2) { animation-delay: 3s; }
         .rotating-phrase:nth-child(3) { animation-delay: 6s; }
 
@@ -587,14 +459,24 @@
             40% { opacity: 0; transform: translateY(-5px); }
         }
 
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #4a5058;
-            font-size: 0.85rem;
-        }
-
+        .footer { text-align: center; margin-top: 40px; color: #4a5058; font-size: 0.85rem; }
         body.light .footer { color: #999; }
+
+        /* Кнопка поделиться */
+        .share-buttons { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-share {
+            padding: 10px 16px;
+            background: #3a4048;
+            color: #c7d5e0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-share:hover { background: #4a5058; }
+        body.light .btn-share { background: #e8e8e8; color: #333; }
 
         /* Адаптация */
         @media (max-width: 768px) {
@@ -617,6 +499,7 @@
             <a href="#streams" class="nav-link">Стримы</a>
             <a href="#tanks" class="nav-link">Танки</a>
             <a href="#faq" class="nav-link">FAQ</a>
+            <a href="#about" class="nav-link">Обо мне</a>
             <button class="theme-btn" onclick="toggleTheme()">🌙</button>
         </div>
     </div>
@@ -630,6 +513,9 @@
             <div class="subtitle">Tanks Blitz • Стример</div>
         </div>
 
+        <!-- Цитата дня -->
+        <div class="quote-day" id="quoteDay"></div>
+
         <!-- Девиз -->
         <div class="motto">Играю в танки. Иногда стримлю. Часто смеюсь.</div>
 
@@ -638,7 +524,7 @@
             <div class="status-indicator offline" id="status-indicator"></div>
             <div>
                 <div class="status-text" id="status-text">Сейчас оффлайн</div>
-                <div class="status-time">Загляни позже или подпишись на Telegram</div>
+                <div class="status-time">Последний стрим: 15 августа 2026</div>
             </div>
         </div>
 
@@ -647,7 +533,11 @@
             <div class="card">
                 <div class="card-title">Прямой эфир</div>
                 <a href="https://live.vkvideo.ru/kiryshauni" class="btn-stream" target="_blank">Открыть канал</a>
-                <p class="about-text" style="text-align: center;">Стрим идёт? Заглядывай!</p>
+                <p class="about-text" style="text-align: center; margin-bottom: 15px;">Стрим идёт? Заглядывай!</p>
+                <div class="share-buttons">
+                    <button class="btn-share" onclick="shareVK()">Поделиться VK</button>
+                    <button class="btn-share" onclick="shareTG()">Поделиться TG</button>
+                </div>
             </div>
 
             <div class="card">
@@ -657,8 +547,16 @@
                     Катаю в Tanks Blitz по фану.
                 </p>
                 <div class="social-buttons" style="margin-top: 20px;">
-                    <a href="https://t.me/icybasya?text=Привет,%20LYD1K!%20Пишу%20с%20сайта." class="btn-social btn-write" target="_blank">Написать</a>
+                    <a href="https://vk.com/club197885202" class="btn-social btn-vk" target="_blank">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.576-1.496c.588-.19 1.341 1.26 2.14 1.818.605.422 1.064.33 1.064.33l2.137-.03s1.117-.071.587-.964c-.043-.073-.308-.661-1.588-1.87-1.34-1.264-1.16-1.059.453-3.246.983-1.332 1.376-2.145 1.253-2.493-.117-.332-.84-.244-.84-.244l-2.406.015s-.178-.025-.31.056c-.13.079-.212.262-.212.262s-.382 1.03-.89 1.907c-1.07 1.85-1.499 1.948-1.674 1.832-.407-.267-.305-1.075-.305-1.649 0-1.793.267-2.54-.521-2.733-.262-.065-.454-.108-1.123-.115-.858-.009-1.585.003-1.996.208-.274.136-.485.44-.356.457.159.022.519.099.71.363.25.344.243 1.119.243 1.119s.15 2.132-.35 2.397c-.343.182-.81-.19-1.817-1.965-.514-.9-.903-1.895-.903-1.895s-.075-.19-.21-.292c-.164-.124-.395-.164-.395-.164l-2.286.015s-.343.01-.469.161c-.112.135-.009.413-.009.413s1.79 4.267 3.817 6.418c1.86 1.975 3.972 1.844 3.972 1.844z"/></svg>
+                        VK Паблик
+                    </a>
+                    <a href="https://t.me/icybasya" class="btn-social btn-tg" target="_blank">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                        Telegram
+                    </a>
                 </div>
+                <p style="font-size: 0.75rem; color: #6b7a8a; margin-top: 10px;">*Telegram может требовать VPN</p>
             </div>
         </div>
 
@@ -709,6 +607,17 @@
             </div>
         </div>
 
+        <!-- Обо мне подробнее -->
+        <div class="card full-width" id="about">
+            <div class="card-title">Подробнее обо мне</div>
+            <p class="about-text">
+                Привет! Я Кирилл, 22 года, из Иваново. Играю в Tanks Blitz на ПК и Android.
+                Люблю весёлые катки, нестандартные тактики и хорошую компанию в чате.
+                Стримлю по настроению, но всегда стараюсь предупредить заранее в VK-паблике.
+                Заходи на стрим — будет весело!
+            </p>
+        </div>
+
         <!-- FAQ -->
         <div class="card full-width" id="faq">
             <div class="card-title">Частые вопросы</div>
@@ -747,6 +656,25 @@
         function toggleTheme() {
             document.body.classList.toggle('light');
         }
+
+        function shareVK() {
+            window.open('https://vk.com/share.php?url=' + encodeURIComponent(window.location.href), '_blank');
+        }
+
+        function shareTG() {
+            window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank');
+        }
+
+        // Цитата дня
+        const quotes = [
+            'Танки не подведут, если не подведёшь ты',
+            'Лучше один раз выиграть, чем сто раз подумать',
+            'Фан — главное топливо',
+            'Без расписания, зато с душой',
+            'Стримлю, когда танки зовут'
+        ];
+        const quote = quotes[Math.floor(Math.random() * quotes.length)];
+        document.getElementById('quoteDay').textContent = '«' + quote + '»';
 
         async function loadNews() {
             const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=0&single=true&output=csv&_=' + Date.now();
