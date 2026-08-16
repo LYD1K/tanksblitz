@@ -131,14 +131,12 @@
             color: #ffffff;
             letter-spacing: 5px;
             font-family: 'Courier New', monospace;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             margin-bottom: 10px;
         }
 
         .subtitle {
             font-size: 1rem;
             color: #6b7a8a;
-            letter-spacing: 1px;
         }
 
         /* Девиз */
@@ -148,7 +146,6 @@
             color: #e8a87c;
             font-weight: 600;
             margin-bottom: 40px;
-            letter-spacing: 1px;
         }
 
         /* Статус */
@@ -197,7 +194,7 @@
             margin-bottom: 20px;
         }
 
-        /* Горизонтальные ленты */
+        /* Ленты */
         .h-scroll {
             display: flex;
             gap: 15px;
@@ -414,7 +411,7 @@
 
         .btn-top.visible { display: flex; }
 
-        /* Сменяющиеся фразы */
+        /* Фразы */
         .rotating-text {
             text-align: center;
             margin-top: 30px;
@@ -483,10 +480,10 @@
         <div class="motto">Играю в танки. Иногда стримлю. Часто смеюсь.</div>
 
         <!-- Статус -->
-        <div class="status-block" id="status-block">
+        <div class="status-block">
             <div class="status-indicator offline" id="status-indicator"></div>
             <div>
-                <div class="status-text" id="status-text">Загрузка статуса...</div>
+                <div class="status-text" id="status-text">Загрузка...</div>
                 <div class="status-time" id="status-viewers"></div>
             </div>
         </div>
@@ -581,7 +578,6 @@
     <button class="btn-top" id="btnTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">▲</button>
 
     <script>
-        // Загрузка новостей
         async function loadNews() {
             const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=0&single=true&output=csv';
             try {
@@ -607,7 +603,6 @@
             }
         }
 
-        // Загрузка записей стримов
         async function loadStreams() {
             const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=1553994334&single=true&output=csv';
             try {
@@ -635,7 +630,6 @@
             }
         }
 
-        // Загрузка статуса
         async function loadStatus() {
             const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=539734040&single=true&output=csv';
             try {
@@ -643,7 +637,7 @@
                 const data = await res.text();
                 const rows = data.split('\n').filter(r => r.trim());
                 
-                let status = 'оффлайн';
+                let status = 'offline';
                 let viewers = '0';
                 
                 for (let i = 1; i < rows.length; i++) {
@@ -651,8 +645,8 @@
                     if (cols.length >= 2) {
                         const key = cols[0].trim().toLowerCase();
                         const value = cols[1].trim();
-                        if (key === 'статус') status = value;
-                        if (key === 'зрители') viewers = value;
+                        if (key === 'status') status = value;
+                        if (key === 'viewers') viewers = value;
                     }
                 }
                 
@@ -660,7 +654,7 @@
                 const textEl = document.getElementById('status-text');
                 const viewersEl = document.getElementById('status-viewers');
                 
-                if (status === 'онлайн') {
+                if (status === 'online') {
                     indicator.className = 'status-indicator online';
                     textEl.textContent = 'Сейчас онлайн';
                     viewersEl.textContent = `Зрителей: ${viewers}`;
@@ -674,7 +668,6 @@
             }
         }
 
-        // Кнопка наверх
         window.addEventListener('scroll', function() {
             const btn = document.getElementById('btnTop');
             if (window.scrollY > 300) {
@@ -684,7 +677,6 @@
             }
         });
 
-        // Загружаем всё
         loadNews();
         loadStreams();
         loadStatus();
