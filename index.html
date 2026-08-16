@@ -30,7 +30,7 @@
             font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
             min-height: 100vh;
             animation: fadeIn 0.6s ease-out;
-            transition: all 0.3s;
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
         body.light {
@@ -61,7 +61,7 @@
             padding: 15px 20px;
             margin-bottom: 40px;
             border-radius: 0 0 16px 16px;
-            transition: all 0.3s;
+            transition: background 0.5s ease, border-color 0.5s ease;
         }
 
         body.light .nav {
@@ -86,7 +86,7 @@
             font-weight: 500;
             padding: 5px 10px;
             border-radius: 6px;
-            transition: color 0.2s;
+            transition: color 0.3s;
         }
 
         body.light .nav-link { color: #555; }
@@ -111,6 +111,7 @@
             border-radius: 50%;
             background: #6b7280;
             flex-shrink: 0;
+            transition: background 0.3s, box-shadow 0.3s;
         }
 
         .nav-dot.online {
@@ -127,7 +128,7 @@
             height: 36px;
             cursor: pointer;
             font-size: 1.1rem;
-            transition: all 0.3s;
+            transition: background 0.5s ease, border-color 0.5s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -146,7 +147,7 @@
             border-radius: 8px;
             font-size: 0.85rem;
             font-weight: 600;
-            transition: all 0.2s;
+            transition: background 0.3s;
         }
 
         .btn-write-nav:hover {
@@ -161,7 +162,6 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
-            position: relative;
         }
 
         .logo {
@@ -179,13 +179,22 @@
             color: #e8a87c;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            transition: all 0.3s;
+            transition: box-shadow 0.4s ease, transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 25px rgba(232, 168, 124, 0.5), 0 12px 28px rgba(0,0,0,0.4);
         }
 
         body.light .logo {
             background: #fff;
             border-color: #ddd;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        body.light .logo:hover {
+            box-shadow: 0 0 25px rgba(232, 168, 124, 0.4), 0 12px 28px rgba(0,0,0,0.15);
         }
 
         .clan { font-size: 1.2rem; color: #8b98a5; letter-spacing: 3px; margin-bottom: 8px; font-weight: 500; }
@@ -217,7 +226,7 @@
             border-radius: 12px;
             padding: 15px 20px;
             max-width: 600px;
-            transition: all 0.3s;
+            transition: background 0.5s ease, border-color 0.5s ease;
         }
 
         body.light .quote-day {
@@ -232,9 +241,7 @@
             font-size: 0.95rem;
             color: #8b98a5;
             margin-bottom: 40px;
-            letter-spacing: 0.5px;
         }
-
         body.light .motto { color: #888; }
 
         /* Статус */
@@ -247,7 +254,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            transition: all 0.3s;
+            transition: background 0.5s ease, border-color 0.5s ease;
         }
         body.light .status-block { background: #fff; border-color: #ddd; }
 
@@ -286,7 +293,7 @@
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             min-height: 180px;
-            transition: all 0.3s;
+            transition: background 0.5s ease, border-color 0.3s;
         }
         body.light .h-card { background: #fff; border-color: #ddd; }
         .h-card:hover { border-color: #4a5058; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
@@ -307,7 +314,7 @@
             text-decoration: none;
             display: block;
             min-height: 160px;
-            transition: all 0.3s;
+            transition: background 0.5s ease, border-color 0.3s;
         }
         body.light .media-card { background: #fff; border-color: #ddd; }
         .media-card:hover { border-color: #4a5058; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
@@ -329,10 +336,9 @@
             padding: 25px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             backdrop-filter: blur(10px);
-            transition: all 0.3s;
+            transition: background 0.5s ease, border-color 0.3s, opacity 0.6s ease-out, transform 0.6s ease-out;
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.6s ease-out;
         }
 
         .card.visible {
@@ -366,7 +372,7 @@
             font-size: 1.1rem;
             box-shadow: 0 4px 12px rgba(217, 79, 43, 0.3);
             margin-bottom: 15px;
-            transition: all 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .btn-stream:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(217, 79, 43, 0.4); }
 
@@ -380,7 +386,7 @@
             font-size: 0.9rem;
             font-weight: 600;
             min-width: 100px;
-            transition: all 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -487,17 +493,65 @@
         body.light .btn-top { background: #fff; border-color: #ddd; }
         .btn-top.visible { display: flex; }
 
-        /* Фразы */
+        /* Футер */
+        .footer {
+            background: rgba(27, 31, 36, 0.9);
+            border: 1px solid #2a2e33;
+            border-radius: 16px;
+            padding: 30px 25px;
+            margin-top: 40px;
+            text-align: center;
+            transition: background 0.5s ease, border-color 0.5s ease;
+        }
+
+        body.light .footer {
+            background: #fff;
+            border-color: #ddd;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            color: #8b98a5;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover { color: #e8a87c; }
+        body.light .footer-link { color: #777; }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-copy {
+            color: #4a5058;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        body.light .footer-copy { color: #999; }
+
+        /* Сменяющиеся фразы */
         .rotating-text {
             text-align: center;
-            margin-top: 30px;
-            min-height: 30px;
+            margin-top: 20px;
+            min-height: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .rotating-phrase {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #8b98a5;
             animation: phraseFade 9s infinite;
             opacity: 0;
@@ -510,9 +564,6 @@
             10%, 30% { opacity: 1; transform: translateY(0); }
             40% { opacity: 0; transform: translateY(-5px); }
         }
-
-        .footer { text-align: center; margin-top: 40px; color: #4a5058; font-size: 0.85rem; }
-        body.light .footer { color: #999; }
 
         /* Кнопка поделиться */
         .share-buttons { display: flex; gap: 10px; margin-top: 15px; }
@@ -691,14 +742,29 @@
             </div>
         </div>
 
-        <!-- Фразы -->
-        <div class="rotating-text">
-            <span class="rotating-phrase">Танки. Фан. Ночные стримы.</span>
-            <span class="rotating-phrase">Без расписания, зато с душой.</span>
-            <span class="rotating-phrase">По фану. Без понтов.</span>
+        <!-- Футер -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="#main" class="footer-link">Главное</a>
+                <a href="#news" class="footer-link">Новости</a>
+                <a href="#streams" class="footer-link">Стримы</a>
+                <a href="#faq" class="footer-link">FAQ</a>
+                <a href="#about" class="footer-link">Обо мне</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://vk.com/club197885202" class="btn-social btn-vk" target="_blank" style="flex: 0 0 auto; min-width: auto; padding: 10px 20px;">VK</a>
+                <a href="https://t.me/icybasya" class="btn-social btn-tg" target="_blank" style="flex: 0 0 auto; min-width: auto; padding: 10px 20px;">TG</a>
+                <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank" style="flex: 0 0 auto; min-width: auto; padding: 10px 20px;">Донат</a>
+            </div>
+            <div class="rotating-text">
+                <span class="rotating-phrase">Танки. Фан. Ночные стримы.</span>
+                <span class="rotating-phrase">Без расписания, зато с душой.</span>
+                <span class="rotating-phrase">По фану. Без понтов.</span>
+            </div>
+            <div class="footer-copy" style="margin-top: 15px;">
+                LYD1K • Tanks Blitz
+            </div>
         </div>
-
-        <div class="footer">LYD1K • Tanks Blitz</div>
     </div>
 
     <!-- Кнопка наверх -->
