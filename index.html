@@ -287,7 +287,16 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             backdrop-filter: blur(10px);
             transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
         }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         body.light .card { background: #fff; border-color: #ddd; }
         .card:hover { border-color: #4a5058; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 
@@ -667,6 +676,22 @@
         ];
         const quote = quotes[Math.floor(Math.random() * quotes.length)];
         document.getElementById('quoteDay').textContent = '«' + quote + '»';
+
+        // Анимация появления карточек
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
 
         async function loadNews() {
             const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=0&single=true&output=csv&_=' + Date.now();
