@@ -118,6 +118,7 @@
         .card:nth-child(3) { animation-delay: 0.5s; }
         .card:nth-child(4) { animation-delay: 0.6s; }
         .card:nth-child(5) { animation-delay: 0.7s; }
+        .card:nth-child(6) { animation-delay: 0.8s; }
 
         .card-title {
             font-size: 0.85rem;
@@ -249,6 +250,52 @@
         .highlight {
             color: #e8a87c;
             font-weight: bold;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid #363c44;
+            padding: 12px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: bold;
+            color: #c7d5e0;
+            font-size: 0.95rem;
+            padding: 5px 0;
+        }
+
+        .faq-arrow {
+            transition: transform 0.3s;
+            color: #8b98a5;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+            color: #aeb8c2;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-top: 10px;
         }
 
         /* Сменяющиеся фразы */
@@ -383,10 +430,55 @@
         <div class="card">
             <div class="card-title">Поддержать</div>
             <p class="about-text" style="margin-bottom: 15px;">
-                Хочешь поддержать стрим? Все средства идут на прем-танки и развитие канала.
+                Поддержи стрим — хватит на дошик. Или на прем-танк. Как пойдёт.
             </p>
             <div class="social-buttons">
                 <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank">Донат</a>
+            </div>
+        </div>
+
+        <!-- Блок: FAQ -->
+        <div class="card">
+            <div class="card-title">Частые вопросы</div>
+            
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    Почему ник из цифр?
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Это номер карты. Выглядит как секретный код, согласись.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    Когда стримишь?
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    По настроению или когда появится свободное время и нервные клетки восстановятся.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    На чём играешь?
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    На ПК через Lesta Games и на Android.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    Как поддержать?
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Кнопка "Донат" выше. Даже на дошик буду рад.
+                </div>
             </div>
         </div>
 
