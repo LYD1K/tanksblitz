@@ -259,6 +259,8 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             transition: border-color 0.3s, box-shadow 0.3s;
             min-height: 180px;
+            text-decoration: none;
+            display: block;
         }
 
         .h-card:hover {
@@ -286,19 +288,37 @@
             line-height: 1.5;
         }
 
-        /* Медиа-заглушки */
-        .media-placeholder {
-            background: #1b1e21;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
+        /* Медиа-карточки */
+        .media-card {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: block;
+            min-height: 160px;
+        }
+
+        .media-card:hover {
+            border-color: #4a5058;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .media-date {
+            font-size: 0.8rem;
             color: #6b7a8a;
-            font-size: 0.9rem;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .media-title {
+            font-weight: 600;
+            color: #c7d5e0;
+            margin-bottom: 8px;
+            font-size: 1rem;
         }
 
         .media-icon {
@@ -306,7 +326,7 @@
             margin-bottom: 10px;
         }
 
-        /* Сетка для остальных карточек */
+        /* Сетка */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -437,13 +457,18 @@
 
         .stats-table td:last-child {
             text-align: right;
-            color: #ffffff;
             font-weight: 600;
         }
 
         .stats-table tr:last-child td {
             border-bottom: none;
         }
+
+        /* Цвета статистики */
+        .stat-battles { color: #e8a87c; }
+        .stat-wins { color: #4dd0e1; }
+        .stat-platforms { color: #ffffff; }
+        .stat-style { color: #ab47bc; }
 
         .about-text {
             font-size: 1rem;
@@ -574,7 +599,7 @@
                 font-size: 1.2rem;
             }
 
-            .h-card {
+            .h-card, .media-card {
                 flex: 0 0 250px;
             }
 
@@ -649,24 +674,24 @@
             <div class="section-title">Новости</div>
             <div class="h-scroll">
                 <div class="h-card">
-                    <div class="news-date">Август 2026</div>
+                    <div class="news-date">16 августа 2026</div>
                     <div class="news-title">Сайт запущен</div>
                     <div class="news-text">Теперь у меня есть свой уголок в интернете.</div>
                 </div>
                 <div class="h-card">
-                    <div class="news-date">Август 2026</div>
+                    <div class="news-date">16 августа 2026</div>
                     <div class="news-title">Стримы по настроению</div>
                     <div class="news-text">Подпишись на Telegram, чтобы не пропустить.</div>
+                </div>
+                <div class="h-card">
+                    <div class="news-date">15 августа 2026</div>
+                    <div class="news-title">Записи стримов добавлены</div>
+                    <div class="news-text">Теперь можно посмотреть последние эфиры.</div>
                 </div>
                 <div class="h-card">
                     <div class="news-date">Скоро</div>
                     <div class="news-title">Игры с подписчиками</div>
                     <div class="news-text">Планирую собрать пати из зрителей.</div>
-                </div>
-                <div class="h-card">
-                    <div class="news-date">Скоро</div>
-                    <div class="news-title">Новые записи стримов</div>
-                    <div class="news-text">Буду выкладывать лучшие моменты.</div>
                 </div>
             </div>
         </div>
@@ -675,30 +700,26 @@
         <div class="section" id="streams">
             <div class="section-title">Записи стримов</div>
             <div class="h-scroll">
-                <div class="h-card">
-                    <div class="media-placeholder">
-                        <div class="media-icon">🎬</div>
-                        Здесь будет запись
-                    </div>
-                </div>
-                <div class="h-card">
-                    <div class="media-placeholder">
-                        <div class="media-icon">🎬</div>
-                        Здесь будет запись
-                    </div>
-                </div>
-                <div class="h-card">
-                    <div class="media-placeholder">
-                        <div class="media-icon">🎬</div>
-                        Здесь будет запись
-                    </div>
-                </div>
-                <div class="h-card">
-                    <div class="media-placeholder">
-                        <div class="media-icon">🎬</div>
-                        Здесь будет запись
-                    </div>
-                </div>
+                <a href="https://live.vkvideo.ru/kiryshauni/record/2c23039f-3fab-4356-a139-1f3dd947afd0?tab=video" class="media-card" target="_blank">
+                    <div class="media-date">15 августа 2026</div>
+                    <div class="media-icon">🎬</div>
+                    <div class="media-title">Стрим</div>
+                </a>
+                <a href="https://live.vkvideo.ru/kiryshauni/record/c6eda898-8a53-4e0b-9683-7325b32f643d?tab=video" class="media-card" target="_blank">
+                    <div class="media-date">15 августа 2026</div>
+                    <div class="media-icon">🎬</div>
+                    <div class="media-title">Стрим (ранний)</div>
+                </a>
+                <a href="https://live.vkvideo.ru/kiryshauni/record/0cfc3331-b40c-421e-bd6c-e29cbf02d48b" class="media-card" target="_blank">
+                    <div class="media-date">14 августа 2026</div>
+                    <div class="media-icon">🎬</div>
+                    <div class="media-title">Стрим</div>
+                </a>
+                <a href="https://live.vkvideo.ru/kiryshauni/record/7dd367b0-a87b-4b09-bcc0-4a899ef2d449?tab=video" class="media-card" target="_blank">
+                    <div class="media-date">14 августа 2026</div>
+                    <div class="media-icon">🎬</div>
+                    <div class="media-title">Стрим (ранний)</div>
+                </a>
             </div>
         </div>
 
@@ -707,10 +728,10 @@
             <div class="card">
                 <div class="card-title">Боевые данные</div>
                 <table class="stats-table">
-                    <tr><td>Боёв</td><td>13 000+</td></tr>
-                    <tr><td>Побед</td><td>63.7%</td></tr>
-                    <tr><td>Платформы</td><td>ПК (Lesta) + Android</td></tr>
-                    <tr><td>Стиль игры</td><td>По фану</td></tr>
+                    <tr><td>Боёв</td><td class="stat-battles">13 000+</td></tr>
+                    <tr><td>Побед</td><td class="stat-wins">63.7%</td></tr>
+                    <tr><td>Платформы</td><td class="stat-platforms">ПК (Lesta) + Android</td></tr>
+                    <tr><td>Стиль игры</td><td class="stat-style">По фану</td></tr>
                 </table>
             </div>
 
