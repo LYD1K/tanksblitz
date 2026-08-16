@@ -11,7 +11,7 @@
     <!-- Тёмная тема браузера -->
     <meta name="theme-color" content="#1b1f24">
     
-    <!-- Open Graph для соцсетей -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="LYD1K | Tanks Blitz">
     <meta property="og:description" content="Стримлю, когда могу. Нагибаю, когда стримлю.">
@@ -21,15 +21,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             background: linear-gradient(135deg, #1b1f24 0%, #1a1d22 50%, #1e2228 100%);
@@ -40,14 +33,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .container {
@@ -84,9 +71,9 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.2s;
             padding: 5px 10px;
             border-radius: 6px;
+            transition: color 0.2s;
         }
 
         .nav-link:hover {
@@ -98,7 +85,6 @@
         .header {
             text-align: center;
             margin-bottom: 50px;
-            animation: fadeIn 0.8s ease-out 0.2s both;
             position: relative;
         }
 
@@ -129,12 +115,6 @@
             color: #e8a87c;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .logo:hover {
-            transform: scale(1.03);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.4);
         }
 
         .clan {
@@ -168,7 +148,6 @@
             color: #e8a87c;
             font-weight: 600;
             margin-bottom: 40px;
-            animation: fadeIn 0.8s ease-out 0.3s both;
             letter-spacing: 1px;
         }
 
@@ -182,19 +161,19 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            animation: fadeIn 0.6s ease-out 0.4s both;
         }
 
         .status-indicator {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #4a5058;
+            background: #6b7280;
             flex-shrink: 0;
         }
 
-        .status-indicator.offline {
-            background: #6b7280;
+        .status-indicator.online {
+            background: #4ade80;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
         }
 
         .status-text {
@@ -209,16 +188,13 @@
         }
 
         /* Секции */
-        .section {
-            margin-bottom: 50px;
-        }
+        .section { margin-bottom: 50px; }
 
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 20px;
-            letter-spacing: 1px;
         }
 
         /* Горизонтальные ленты */
@@ -231,23 +207,9 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        .h-scroll::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .h-scroll::-webkit-scrollbar-track {
-            background: #1b1f24;
-            border-radius: 3px;
-        }
-
-        .h-scroll::-webkit-scrollbar-thumb {
-            background: #3a4048;
-            border-radius: 3px;
-        }
-
-        .h-scroll::-webkit-scrollbar-thumb:hover {
-            background: #4a5058;
-        }
+        .h-scroll::-webkit-scrollbar { height: 6px; }
+        .h-scroll::-webkit-scrollbar-track { background: #1b1f24; border-radius: 3px; }
+        .h-scroll::-webkit-scrollbar-thumb { background: #3a4048; border-radius: 3px; }
 
         .h-card {
             flex: 0 0 280px;
@@ -257,8 +219,8 @@
             border-radius: 14px;
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: border-color 0.3s, box-shadow 0.3s;
             min-height: 180px;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .h-card:hover {
@@ -266,27 +228,10 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
 
-        /* Новости */
-        .news-date {
-            font-size: 0.8rem;
-            color: #6b7a8a;
-            margin-bottom: 8px;
-        }
+        .news-date { font-size: 0.8rem; color: #6b7a8a; margin-bottom: 8px; }
+        .news-title { font-weight: 600; color: #e8a87c; margin-bottom: 8px; font-size: 1rem; }
+        .news-text { font-size: 0.9rem; color: #aeb8c2; line-height: 1.5; }
 
-        .news-title {
-            font-weight: 600;
-            color: #e8a87c;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-
-        .news-text {
-            font-size: 0.9rem;
-            color: #aeb8c2;
-            line-height: 1.5;
-        }
-
-        /* Медиа-карточки */
         .media-card {
             flex: 0 0 280px;
             scroll-snap-align: start;
@@ -295,10 +240,10 @@
             border-radius: 14px;
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: border-color 0.3s, box-shadow 0.3s;
             text-decoration: none;
             display: block;
             min-height: 160px;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .media-card:hover {
@@ -306,23 +251,9 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
 
-        .media-date {
-            font-size: 0.8rem;
-            color: #6b7a8a;
-            margin-bottom: 8px;
-        }
-
-        .media-title {
-            font-weight: 600;
-            color: #c7d5e0;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-
-        .media-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
+        .media-date { font-size: 0.8rem; color: #6b7a8a; margin-bottom: 8px; }
+        .media-title { font-weight: 600; color: #c7d5e0; margin-bottom: 8px; font-size: 1rem; }
+        .media-icon { font-size: 2rem; margin-bottom: 10px; }
 
         /* Сетка */
         .grid {
@@ -332,9 +263,7 @@
             margin-bottom: 20px;
         }
 
-        .full-width {
-            grid-column: 1 / -1;
-        }
+        .full-width { grid-column: 1 / -1; }
 
         .card {
             background: rgba(38, 41, 46, 0.85);
@@ -342,7 +271,6 @@
             border-radius: 16px;
             padding: 25px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            animation: fadeIn 0.6s ease-out;
             backdrop-filter: blur(10px);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
@@ -372,10 +300,9 @@
             border-radius: 12px;
             font-weight: 700;
             font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 12px rgba(217, 79, 43, 0.3);
             margin-bottom: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .btn-stream:hover {
@@ -397,97 +324,37 @@
             border-radius: 10px;
             font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: transform 0.2s, box-shadow 0.2s;
             min-width: 100px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .btn-social:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-vk {
-            background: #0077ff;
-            color: white;
-            box-shadow: 0 4px 12px rgba(0, 119, 255, 0.3);
-        }
-        .btn-vk:hover {
-            box-shadow: 0 8px 20px rgba(0, 119, 255, 0.4);
-        }
-
-        .btn-tg {
-            background: #229ed9;
-            color: white;
-            box-shadow: 0 4px 12px rgba(34, 158, 217, 0.3);
-        }
-        .btn-tg:hover {
-            box-shadow: 0 8px 20px rgba(34, 158, 217, 0.4);
-        }
-
-        .btn-donate {
-            background: linear-gradient(135deg, #f2a33c 0%, #e08e2a 100%);
-            color: #1b1e21;
-            box-shadow: 0 4px 12px rgba(242, 163, 60, 0.3);
-        }
-        .btn-donate:hover {
-            box-shadow: 0 8px 20px rgba(242, 163, 60, 0.4);
-        }
-
-        .btn-write {
-            background: #3a4048;
-            color: #c7d5e0;
-        }
-        .btn-write:hover {
-            background: #4a5058;
-        }
+        .btn-social:hover { transform: translateY(-2px); }
+        .btn-vk { background: #0077ff; color: white; }
+        .btn-tg { background: #229ed9; color: white; }
+        .btn-donate { background: #f2a33c; color: #1b1e21; }
+        .btn-write { background: #3a4048; color: #c7d5e0; }
 
         /* Таблица */
-        .stats-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
+        .stats-table { width: 100%; border-collapse: collapse; }
         .stats-table td {
             padding: 14px 0;
             border-bottom: 1px solid #363c44;
             font-size: 1rem;
         }
+        .stats-table td:last-child { text-align: right; font-weight: 600; }
+        .stats-table tr:last-child td { border-bottom: none; }
 
-        .stats-table td:last-child {
-            text-align: right;
-            font-weight: 600;
-        }
-
-        .stats-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Цвета статистики */
         .stat-battles { color: #e8a87c; }
         .stat-wins { color: #4dd0e1; }
         .stat-platforms { color: #ffffff; }
         .stat-style { color: #ab47bc; }
 
-        .about-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #aeb8c2;
-        }
-
-        .highlight {
-            color: #e8a87c;
-            font-weight: 600;
-        }
+        .about-text { font-size: 1rem; line-height: 1.7; color: #aeb8c2; }
+        .highlight { color: #e8a87c; font-weight: 600; }
 
         /* FAQ */
-        .faq-item {
-            border-bottom: 1px solid #363c44;
-            padding: 14px 0;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-        }
+        .faq-item { border-bottom: 1px solid #363c44; padding: 14px 0; }
+        .faq-item:last-child { border-bottom: none; }
 
         .faq-question {
             display: flex;
@@ -503,7 +370,6 @@
         .faq-arrow {
             transition: transform 0.3s;
             color: #8b98a5;
-            flex-shrink: 0;
             margin-left: 10px;
             font-size: 0.8rem;
         }
@@ -511,20 +377,42 @@
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s;
+            transition: max-height 0.3s ease-out;
             color: #aeb8c2;
             font-size: 0.9rem;
             line-height: 1.6;
         }
 
-        .faq-item.active .faq-arrow {
-            transform: rotate(180deg);
+        .faq-item.active .faq-arrow { transform: rotate(180deg); }
+        .faq-item.active .faq-answer { max-height: 200px; padding-top: 10px; }
+
+        /* Кнопка наверх */
+        .btn-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(38, 41, 46, 0.9);
+            border: 1px solid #3a4048;
+            border-radius: 50%;
+            color: #e8a87c;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-top: 10px;
+        .btn-top:hover {
+            background: #3a4048;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
+
+        .btn-top.visible { display: flex; }
 
         /* Сменяющиеся фразы */
         .rotating-text {
@@ -543,13 +431,8 @@
             opacity: 0;
         }
 
-        .rotating-phrase:nth-child(2) {
-            animation-delay: 3s;
-        }
-
-        .rotating-phrase:nth-child(3) {
-            animation-delay: 6s;
-        }
+        .rotating-phrase:nth-child(2) { animation-delay: 3s; }
+        .rotating-phrase:nth-child(3) { animation-delay: 6s; }
 
         @keyframes phraseFade {
             0%, 100% { opacity: 0; transform: translateY(5px); }
@@ -562,54 +445,17 @@
             margin-top: 40px;
             color: #4a5058;
             font-size: 0.85rem;
-            letter-spacing: 1px;
         }
 
         /* Адаптация */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .nickname {
-                font-size: 1.5rem;
-                letter-spacing: 3px;
-            }
-
-            .logo {
-                width: 80px;
-                height: 80px;
-                font-size: 2.5rem;
-                border-radius: 20px;
-            }
-
-            .clan {
-                font-size: 1rem;
-                letter-spacing: 2px;
-            }
-
-            .motto {
-                font-size: 1.2rem;
-            }
-
-            .h-card, .media-card {
-                flex: 0 0 250px;
-            }
-
-            .btn-stream {
-                font-size: 1rem;
-                padding: 14px;
-            }
-
-            .btn-social {
-                font-size: 0.85rem;
-                padding: 11px;
-            }
+            .container { padding: 20px 15px; }
+            .grid { grid-template-columns: 1fr; gap: 15px; }
+            .nickname { font-size: 1.5rem; letter-spacing: 3px; }
+            .logo { width: 80px; height: 80px; font-size: 2.5rem; }
+            .motto { font-size: 1.2rem; }
+            .h-card, .media-card { flex: 0 0 250px; }
+            .btn-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
         }
     </style>
 </head>
@@ -634,16 +480,14 @@
         </div>
 
         <!-- Девиз -->
-        <div class="motto">
-            Играю в танки. Иногда стримлю. Часто смеюсь.
-        </div>
+        <div class="motto">Играю в танки. Иногда стримлю. Часто смеюсь.</div>
 
         <!-- Статус -->
-        <div class="status-block">
-            <div class="status-indicator offline"></div>
+        <div class="status-block" id="status-block">
+            <div class="status-indicator offline" id="status-indicator"></div>
             <div>
-                <div class="status-text">Сейчас оффлайн</div>
-                <div class="status-time">Загляни позже или подпишись на Telegram</div>
+                <div class="status-text" id="status-text">Загрузка статуса...</div>
+                <div class="status-time" id="status-viewers"></div>
             </div>
         </div>
 
@@ -667,42 +511,19 @@
             </div>
         </div>
 
-        <!-- Секция: Новости (из Google Таблицы) -->
+        <!-- Новости -->
         <div class="section" id="news">
             <div class="section-title">Новости</div>
-            <div class="h-scroll" id="news-container">
-                <!-- Новости загрузятся автоматически -->
-            </div>
+            <div class="h-scroll" id="news-container"></div>
         </div>
 
-        <!-- Секция: Записи стримов -->
+        <!-- Записи стримов -->
         <div class="section" id="streams">
             <div class="section-title">Записи стримов</div>
-            <div class="h-scroll">
-                <a href="https://live.vkvideo.ru/kiryshauni/record/2c23039f-3fab-4356-a139-1f3dd947afd0?tab=video" class="media-card" target="_blank">
-                    <div class="media-date">15 августа 2026</div>
-                    <div class="media-icon">🎬</div>
-                    <div class="media-title">Стрим</div>
-                </a>
-                <a href="https://live.vkvideo.ru/kiryshauni/record/c6eda898-8a53-4e0b-9683-7325b32f643d?tab=video" class="media-card" target="_blank">
-                    <div class="media-date">15 августа 2026</div>
-                    <div class="media-icon">🎬</div>
-                    <div class="media-title">Стрим (ранний)</div>
-                </a>
-                <a href="https://live.vkvideo.ru/kiryshauni/record/0cfc3331-b40c-421e-bd6c-e29cbf02d48b" class="media-card" target="_blank">
-                    <div class="media-date">14 августа 2026</div>
-                    <div class="media-icon">🎬</div>
-                    <div class="media-title">Стрим</div>
-                </a>
-                <a href="https://live.vkvideo.ru/kiryshauni/record/7dd367b0-a87b-4b09-bcc0-4a899ef2d449?tab=video" class="media-card" target="_blank">
-                    <div class="media-date">14 августа 2026</div>
-                    <div class="media-icon">🎬</div>
-                    <div class="media-title">Стрим (ранний)</div>
-                </a>
-            </div>
+            <div class="h-scroll" id="streams-container"></div>
         </div>
 
-        <!-- Сетка: статистика и поддержка -->
+        <!-- Статистика и поддержка -->
         <div class="grid">
             <div class="card">
                 <div class="card-title">Боевые данные</div>
@@ -746,56 +567,127 @@
             </div>
         </div>
 
-        <!-- Сменяющиеся фразы -->
+        <!-- Фразы -->
         <div class="rotating-text">
             <span class="rotating-phrase">Танки. Фан. Ночные стримы.</span>
             <span class="rotating-phrase">Без расписания, зато с душой.</span>
             <span class="rotating-phrase">По фану. Без понтов.</span>
         </div>
 
-        <div class="footer">
-            LYD1K • Tanks Blitz
-        </div>
+        <div class="footer">LYD1K • Tanks Blitz</div>
     </div>
 
+    <!-- Кнопка наверх -->
+    <button class="btn-top" id="btnTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">▲</button>
+
     <script>
-        // Функция загрузки новостей из Google Таблицы
+        // Загрузка новостей
         async function loadNews() {
-            const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?output=csv';
-            
+            const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=0&single=true&output=csv';
             try {
-                const response = await fetch(csvUrl);
-                const data = await response.text();
-                const rows = data.split('\n').filter(row => row.trim());
-                
-                const newsContainer = document.getElementById('news-container');
-                
-                // Пропускаем заголовок (первая строка)
+                const res = await fetch(url);
+                const data = await res.text();
+                const rows = data.split('\n').filter(r => r.trim());
+                const container = document.getElementById('news-container');
                 for (let i = 1; i < rows.length; i++) {
                     const cols = rows[i].split(',');
                     if (cols.length >= 3) {
-                        const date = cols[0].trim();
-                        const title = cols[1].trim();
-                        const text = cols[2].trim();
-                        
                         const card = document.createElement('div');
                         card.className = 'h-card';
                         card.innerHTML = `
-                            <div class="news-date">${date}</div>
-                            <div class="news-title">${title}</div>
-                            <div class="news-text">${text}</div>
+                            <div class="news-date">${cols[0].trim()}</div>
+                            <div class="news-title">${cols[1].trim()}</div>
+                            <div class="news-text">${cols[2].trim()}</div>
                         `;
-                        newsContainer.appendChild(card);
+                        container.appendChild(card);
                     }
                 }
-            } catch (error) {
-                console.error('Ошибка загрузки новостей:', error);
+            } catch(e) {
                 document.getElementById('news-container').innerHTML = '<div class="h-card"><div class="news-text">Не удалось загрузить новости</div></div>';
             }
         }
 
-        // Загружаем новости при открытии
+        // Загрузка записей стримов
+        async function loadStreams() {
+            const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=1553994334&single=true&output=csv';
+            try {
+                const res = await fetch(url);
+                const data = await res.text();
+                const rows = data.split('\n').filter(r => r.trim());
+                const container = document.getElementById('streams-container');
+                for (let i = 1; i < rows.length; i++) {
+                    const cols = rows[i].split(',');
+                    if (cols.length >= 3) {
+                        const card = document.createElement('a');
+                        card.className = 'media-card';
+                        card.href = cols[2].trim();
+                        card.target = '_blank';
+                        card.innerHTML = `
+                            <div class="media-date">${cols[0].trim()}</div>
+                            <div class="media-icon">🎬</div>
+                            <div class="media-title">${cols[1].trim()}</div>
+                        `;
+                        container.appendChild(card);
+                    }
+                }
+            } catch(e) {
+                document.getElementById('streams-container').innerHTML = '<div class="h-card"><div class="news-text">Записи скоро появятся</div></div>';
+            }
+        }
+
+        // Загрузка статуса
+        async function loadStatus() {
+            const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=539734040&single=true&output=csv';
+            try {
+                const res = await fetch(url);
+                const data = await res.text();
+                const rows = data.split('\n').filter(r => r.trim());
+                
+                let status = 'оффлайн';
+                let viewers = '0';
+                
+                for (let i = 1; i < rows.length; i++) {
+                    const cols = rows[i].split(',');
+                    if (cols.length >= 2) {
+                        const key = cols[0].trim().toLowerCase();
+                        const value = cols[1].trim();
+                        if (key === 'статус') status = value;
+                        if (key === 'зрители') viewers = value;
+                    }
+                }
+                
+                const indicator = document.getElementById('status-indicator');
+                const textEl = document.getElementById('status-text');
+                const viewersEl = document.getElementById('status-viewers');
+                
+                if (status === 'онлайн') {
+                    indicator.className = 'status-indicator online';
+                    textEl.textContent = 'Сейчас онлайн';
+                    viewersEl.textContent = `Зрителей: ${viewers}`;
+                } else {
+                    indicator.className = 'status-indicator offline';
+                    textEl.textContent = 'Сейчас оффлайн';
+                    viewersEl.textContent = 'Загляни позже или подпишись на Telegram';
+                }
+            } catch(e) {
+                document.getElementById('status-text').textContent = 'Не удалось загрузить статус';
+            }
+        }
+
+        // Кнопка наверх
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('btnTop');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // Загружаем всё
         loadNews();
+        loadStreams();
+        loadStatus();
     </script>
 </body>
 </html>
