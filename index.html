@@ -418,25 +418,56 @@
         /* Иконки */
         .icon { width: 18px; height: 18px; flex-shrink: 0; }
 
-        /* Танки */
-        .tank-list { display: flex; gap: 12px; flex-wrap: wrap; }
-        .tank-tag {
-            padding: 10px 18px;
+        /* Сетка танков */
+        .tank-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tank-card {
             background: rgba(38, 41, 46, 0.85);
             border: 1px solid #3a4048;
-            border-radius: 25px;
+            border-radius: 14px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        body.light .tank-card {
+            background: #fff;
+            border-color: #ddd;
+        }
+
+        .tank-card:hover {
+            border-color: #e8a87c;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+        }
+
+        .tank-img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .tank-card:hover .tank-img {
+            transform: scale(1.05);
+        }
+
+        .tank-name {
             font-size: 0.9rem;
             font-weight: 600;
             color: #c7d5e0;
-            transition: all 0.3s;
-            cursor: default;
+            letter-spacing: 0.5px;
         }
-        body.light .tank-tag { background: #fff; border-color: #ddd; color: #333; }
-        .tank-tag:hover {
-            border-color: #e8a87c;
-            color: #e8a87c;
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(232, 168, 124, 0.3);
+
+        body.light .tank-name {
+            color: #333;
         }
 
         /* Таблица */
@@ -610,6 +641,13 @@
             .nav-link { font-size: 0.8rem; padding: 4px 7px; }
             .btn-write-nav { padding: 6px 10px; font-size: 0.75rem; }
             .nav { position: relative; }
+            .tank-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .tank-img {
+                max-height: 120px;
+            }
         }
     </style>
 </head>
@@ -693,12 +731,27 @@
         <!-- Танки -->
         <div class="section" id="tanks">
             <div class="section-title">Моя техника</div>
-            <div class="tank-list">
-                <span class="tank-tag">CS-63</span>
-                <span class="tank-tag">AMX M4 Mle.</span>
-                <span class="tank-tag">Т-62А</span>
-                <span class="tank-tag">М-60</span>
-                <span class="tank-tag">Grille 15</span>
+            <div class="tank-grid">
+                <div class="tank-card">
+                    <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/Pl21_CS_63.png" alt="CS-63" class="tank-img">
+                    <div class="tank-name">CS-63</div>
+                </div>
+                <div class="tank-card">
+                    <img src="https://eu-wotp.wgcdn.co/dcont/tankopedia_images/f82_amx_m4_mle1949_ter/f82_amx_m4_mle1949_ter_image_resized.png" alt="AMX M4 Mle." class="tank-img">
+                    <div class="tank-name">AMX M4 Mle.</div>
+                </div>
+                <div class="tank-card">
+                    <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/R87_T62A.png" alt="Т-62А" class="tank-img">
+                    <div class="tank-name">Т-62А</div>
+                </div>
+                <div class="tank-card">
+                    <img src="https://www.pngitem.com/pimgs/m/279-2798868_m60-world-of-tanks-blitz-wot-blitz.png" alt="М-60" class="tank-img">
+                    <div class="tank-name">М-60</div>
+                </div>
+                <div class="tank-card">
+                    <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/G121_Grille_15_L63.png" alt="Grille 15" class="tank-img">
+                    <div class="tank-name">Grille 15</div>
+                </div>
             </div>
         </div>
 
