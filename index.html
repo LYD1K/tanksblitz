@@ -293,10 +293,14 @@
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             min-height: 180px;
-            transition: background 0.5s ease, border-color 0.3s;
+            transition: background 0.5s ease, border-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
         }
         body.light .h-card { background: #fff; border-color: #ddd; }
-        .h-card:hover { border-color: #4a5058; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .h-card:hover {
+            border-color: #4a5058;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+            transform: translateY(-5px);
+        }
 
         .news-date { font-size: 0.8rem; color: #6b7a8a; margin-bottom: 8px; }
         .news-title { font-weight: 600; color: #e8a87c; margin-bottom: 8px; font-size: 1rem; }
@@ -314,10 +318,14 @@
             text-decoration: none;
             display: block;
             min-height: 160px;
-            transition: background 0.5s ease, border-color 0.3s;
+            transition: background 0.5s ease, border-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
         }
         body.light .media-card { background: #fff; border-color: #ddd; }
-        .media-card:hover { border-color: #4a5058; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .media-card:hover {
+            border-color: #4a5058;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+            transform: translateY(-5px);
+        }
 
         .media-date { font-size: 0.8rem; color: #6b7a8a; margin-bottom: 8px; }
         .media-title { font-weight: 600; color: #c7d5e0; margin-bottom: 8px; font-size: 1rem; }
@@ -326,7 +334,7 @@
         .media-thumb { width: 100%; height: 140px; background: #1b1e21; border-radius: 8px; margin-bottom: 10px; object-fit: cover; }
 
         /* Сетка */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; align-items: stretch; }
         .full-width { grid-column: 1 / -1; margin-bottom: 30px; }
 
         .card {
@@ -339,6 +347,8 @@
             transition: background 0.5s ease, border-color 0.3s, opacity 0.6s ease-out, transform 0.6s ease-out;
             opacity: 0;
             transform: translateY(20px);
+            display: flex;
+            flex-direction: column;
         }
 
         .card.visible {
@@ -359,6 +369,13 @@
         }
         body.light .card-title { color: #888; }
 
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
         /* Кнопки */
         .btn-stream {
             display: block;
@@ -373,6 +390,7 @@
             box-shadow: 0 4px 12px rgba(217, 79, 43, 0.3);
             margin-bottom: 15px;
             transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
         }
         .btn-stream:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(217, 79, 43, 0.4); }
 
@@ -593,6 +611,7 @@
             .nav-links { gap: 8px; }
             .nav-link { font-size: 0.8rem; padding: 4px 7px; }
             .btn-write-nav { padding: 6px 10px; font-size: 0.75rem; }
+            .nav { position: relative; }
         }
     </style>
 </head>
@@ -643,21 +662,25 @@
         <div class="grid">
             <div class="card">
                 <div class="card-title">Прямой эфир</div>
-                <a href="https://live.vkvideo.ru/kiryshauni" class="btn-stream" target="_blank">Открыть канал</a>
-                <p class="about-text" style="text-align: center; margin-bottom: 15px;">Стрим идёт? Заглядывай!</p>
-                <div class="share-buttons">
-                    <button class="btn-share" onclick="shareVK()">Поделиться VK</button>
-                    <button class="btn-share" onclick="shareTG()">Поделиться TG</button>
+                <div class="card-content">
+                    <a href="https://live.vkvideo.ru/kiryshauni" class="btn-stream" target="_blank">Открыть канал</a>
+                    <p class="about-text" style="text-align: center; margin-bottom: 15px;">Стрим идёт? Заглядывай!</p>
+                    <div class="share-buttons">
+                        <button class="btn-share" onclick="shareVK()">Поделиться VK</button>
+                        <button class="btn-share" onclick="shareTG()">Поделиться TG</button>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-title">Поддержать</div>
-                <p class="about-text" style="margin-bottom: 20px;">
-                    Поддержи стрим — хватит на дошик. Или на прем-танк.
-                </p>
-                <div class="social-buttons">
-                    <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank">Донат</a>
+                <div class="card-content">
+                    <p class="about-text" style="margin-bottom: 20px;">
+                        Поддержи стрим — хватит на дошик. Или на прем-танк.
+                    </p>
+                    <div class="social-buttons">
+                        <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank">Донат</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -690,12 +713,14 @@
         <div class="grid">
             <div class="card">
                 <div class="card-title">Боевые данные</div>
-                <table class="stats-table">
-                    <tr><td>Боёв</td><td class="stat-battles">13 000+</td></tr>
-                    <tr><td>Побед</td><td class="stat-wins">63.7%</td></tr>
-                    <tr><td>Платформы</td><td class="stat-platforms">ПК (Lesta) + Android</td></tr>
-                    <tr><td>Стиль игры</td><td class="stat-style">По фану</td></tr>
-                </table>
+                <div class="card-content">
+                    <table class="stats-table">
+                        <tr><td>Боёв</td><td class="stat-battles">13 000+</td></tr>
+                        <tr><td>Побед</td><td class="stat-wins">63.7%</td></tr>
+                        <tr><td>Платформы</td><td class="stat-platforms">ПК (Lesta) + Android</td></tr>
+                        <tr><td>Стиль игры</td><td class="stat-style">По фану</td></tr>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -773,6 +798,12 @@
     <script>
         function toggleTheme() {
             document.body.classList.toggle('light');
+            const btn = document.querySelector('.theme-btn');
+            if (document.body.classList.contains('light')) {
+                btn.textContent = '☀️';
+            } else {
+                btn.textContent = '🌙';
+            }
         }
 
         function shareVK() {
