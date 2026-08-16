@@ -33,6 +33,18 @@
             flex-direction: column;
             align-items: center;
             padding: 30px 20px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .container {
@@ -44,6 +56,7 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
         }
 
         .logo {
@@ -61,6 +74,11 @@
             color: #e8a87c;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .clan {
@@ -92,7 +110,14 @@
             padding: 20px;
             margin-bottom: 15px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            animation: fadeIn 0.6s ease-out;
         }
+
+        .card:nth-child(1) { animation-delay: 0.3s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.5s; }
+        .card:nth-child(4) { animation-delay: 0.6s; }
+        .card:nth-child(5) { animation-delay: 0.7s; }
 
         .card-title {
             font-size: 0.85rem;
@@ -128,11 +153,12 @@
             font-weight: bold;
             font-size: 1.1rem;
             letter-spacing: 0.5px;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
         }
 
         .btn-stream:hover {
             background: #e85a35;
+            transform: translateY(-2px);
         }
 
         /* Кнопки соцсетей */
@@ -151,8 +177,12 @@
             font-size: 0.9rem;
             font-weight: bold;
             letter-spacing: 0.5px;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
             min-width: 100px;
+        }
+
+        .btn-social:hover {
+            transform: translateY(-2px);
         }
 
         .btn-vk {
@@ -221,6 +251,19 @@
             font-weight: bold;
         }
 
+        /* Счётчик просмотров */
+        .counter {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #6b7a8a;
+        }
+
+        .counter img {
+            display: block;
+            margin: 0 auto;
+        }
+
         /* Подвал */
         .footer {
             text-align: center;
@@ -278,7 +321,7 @@
                 Играю на ПК (Lesta) и Android.
             </p>
             <div class="social-buttons" style="margin-top: 15px;">
-                <a href="https://t.me/icybasya" class="btn-social btn-write" target="_blank">Написать мне</a>
+                <a href="https://t.me/icybasya?text=Привет,%20LYD1K!%20Пишу%20с%20сайта." class="btn-social btn-write" target="_blank">Написать мне</a>
             </div>
         </div>
 
@@ -327,6 +370,11 @@
             <div class="social-buttons">
                 <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank">Донат</a>
             </div>
+        </div>
+
+        <!-- Счётчик просмотров -->
+        <div class="counter">
+            <img src="https://counter6.optistats.ovh/private/freecounterstat.php?c=4t3k2p1m8n5b7s9" alt="Счётчик просмотров">
         </div>
 
         <!-- Подвал -->
