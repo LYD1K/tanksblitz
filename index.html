@@ -123,6 +123,17 @@
             letter-spacing: 1px;
         }
 
+        /* Девиз */
+        .motto {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #e8a87c;
+            font-weight: 600;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+            letter-spacing: 1px;
+        }
+
         /* Сетка для контента */
         .grid {
             display: grid;
@@ -152,13 +163,6 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
 
-        .card:nth-child(1) { animation-delay: 0.3s; }
-        .card:nth-child(2) { animation-delay: 0.4s; }
-        .card:nth-child(3) { animation-delay: 0.5s; }
-        .card:nth-child(4) { animation-delay: 0.6s; }
-        .card:nth-child(5) { animation-delay: 0.7s; }
-        .card:nth-child(6) { animation-delay: 0.8s; }
-
         .card-title {
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -166,6 +170,47 @@
             color: #8b98a5;
             margin-bottom: 20px;
             font-weight: 600;
+        }
+
+        /* Блок статуса */
+        .status-block {
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: fadeIn 0.6s ease-out 0.4s both;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4a5058;
+            flex-shrink: 0;
+        }
+
+        .status-indicator.online {
+            background: #4ade80;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+        }
+
+        .status-indicator.offline {
+            background: #6b7280;
+        }
+
+        .status-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #c7d5e0;
+        }
+
+        .status-time {
+            font-size: 0.85rem;
+            color: #6b7a8a;
         }
 
         /* Блок стрима */
@@ -297,6 +342,74 @@
             font-weight: 600;
         }
 
+        /* Новости */
+        .news-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #363c44;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: #6b7a8a;
+            margin-bottom: 5px;
+        }
+
+        .news-title {
+            font-weight: 600;
+            color: #e8a87c;
+            margin-bottom: 5px;
+        }
+
+        .news-text {
+            font-size: 0.9rem;
+            color: #aeb8c2;
+            line-height: 1.5;
+        }
+
+        /* Медиа-заглушка */
+        .media-placeholder {
+            background: #1b1e21;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            color: #6b7a8a;
+            font-size: 0.9rem;
+        }
+
+        .media-placeholder-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Занятия */
+        .activity-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .activity-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #363c44;
+            font-size: 0.95rem;
+            color: #aeb8c2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .activity-list li:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            color: #e8a87c;
+            flex-shrink: 0;
+        }
+
         /* FAQ */
         .faq-item {
             border-bottom: 1px solid #363c44;
@@ -412,6 +525,10 @@
                 letter-spacing: 2px;
             }
 
+            .motto {
+                font-size: 1.2rem;
+            }
+
             .btn-stream {
                 font-size: 1rem;
                 padding: 14px;
@@ -432,6 +549,20 @@
             <div class="clan">[LYD1K]</div>
             <div class="nickname">2200153687779711</div>
             <div class="subtitle">Tanks Blitz • Стример</div>
+        </div>
+
+        <!-- Девиз -->
+        <div class="motto">
+            Играю в танки. Иногда стримлю. Часто смеюсь.
+        </div>
+
+        <!-- Статус -->
+        <div class="status-block">
+            <div class="status-indicator offline"></div>
+            <div>
+                <div class="status-text">Сейчас оффлайн</div>
+                <div class="status-time">Загляни позже или подпишись на Telegram</div>
+            </div>
         </div>
 
         <!-- Сетка контента -->
@@ -497,6 +628,32 @@
                 </table>
             </div>
 
+            <!-- Блок: Новости -->
+            <div class="card">
+                <div class="card-title">Новости</div>
+                <div class="news-item">
+                    <div class="news-date">Август 2026</div>
+                    <div class="news-title">Сайт запущен</div>
+                    <div class="news-text">Теперь у меня есть свой уголок в интернете. Дальше — больше.</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Август 2026</div>
+                    <div class="news-title">Стримы по настроению</div>
+                    <div class="news-text">Подпишись на Telegram, чтобы не пропустить эфир.</div>
+                </div>
+            </div>
+
+            <!-- Блок: Чем занимаюсь -->
+            <div class="card">
+                <div class="card-title">Чем занимаюсь</div>
+                <ul class="activity-list">
+                    <li><span class="activity-icon">🎮</span> Стримлю Tanks Blitz</li>
+                    <li><span class="activity-icon">🤝</span> Играю с подписчиками</li>
+                    <li><span class="activity-icon">💬</span> Общаюсь в чате</li>
+                    <li><span class="activity-icon">😄</span> Поднимаю настроение</li>
+                </ul>
+            </div>
+
             <!-- Блок: Поддержка -->
             <div class="card">
                 <div class="card-title">Поддержать</div>
@@ -505,6 +662,15 @@
                 </p>
                 <div class="social-buttons">
                     <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank">Донат</a>
+                </div>
+            </div>
+
+            <!-- Блок: Медиа -->
+            <div class="card">
+                <div class="card-title">Записи стримов</div>
+                <div class="media-placeholder">
+                    <div class="media-placeholder-icon">🎬</div>
+                    Здесь будет запись последнего эфира
                 </div>
             </div>
 
