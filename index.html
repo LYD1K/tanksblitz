@@ -96,6 +96,28 @@
             background: rgba(232, 168, 124, 0.1);
         }
 
+        .nav-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: #8b98a5;
+            padding: 5px 10px;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #6b7280;
+            flex-shrink: 0;
+        }
+
+        .nav-dot.online {
+            background: #4ade80;
+            box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+        }
+
         .theme-btn {
             background: #2a2e33;
             color: #e8a87c;
@@ -114,6 +136,25 @@
         body.light .theme-btn {
             background: #fff;
             border-color: #ddd;
+        }
+
+        .btn-write-nav {
+            padding: 8px 14px;
+            background: #3a4048;
+            color: #c7d5e0;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-write-nav:hover {
+            background: #4a5058;
+        }
+        body.light .btn-write-nav {
+            background: #e8e8e8;
+            color: #333;
         }
 
         /* Шапка */
@@ -174,6 +215,16 @@
 
         .subtitle { font-size: 1rem; color: #6b7a8a; }
         body.light .subtitle { color: #888; }
+
+        /* Настроение */
+        .mood {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #e8a87c;
+            font-weight: 600;
+            margin: 20px 0;
+            font-style: italic;
+        }
 
         /* Цитата дня */
         .quote-day {
@@ -496,6 +547,9 @@
             .motto { font-size: 1.2rem; }
             .h-card, .media-card { flex: 0 0 250px; }
             .btn-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+            .nav-links { gap: 8px; }
+            .nav-link { font-size: 0.8rem; padding: 4px 7px; }
+            .btn-write-nav { padding: 6px 10px; font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -509,6 +563,11 @@
             <a href="#tanks" class="nav-link">Танки</a>
             <a href="#faq" class="nav-link">FAQ</a>
             <a href="#about" class="nav-link">Обо мне</a>
+            <span class="nav-status">
+                <span class="nav-dot offline" id="nav-dot"></span>
+                <span id="nav-status-text">Оффлайн</span>
+            </span>
+            <a href="https://t.me/icybasya?text=Привет,%20LYD1K!%20Пишу%20с%20сайта." class="btn-write-nav" target="_blank">Написать</a>
             <button class="theme-btn" onclick="toggleTheme()">🌙</button>
         </div>
     </div>
@@ -521,6 +580,9 @@
             <div class="nickname">2200153687779711</div>
             <div class="subtitle">Tanks Blitz • Стример</div>
         </div>
+
+        <!-- Настроение -->
+        <div class="mood" id="mood"></div>
 
         <!-- Цитата дня -->
         <div class="quote-day" id="quoteDay"></div>
@@ -604,7 +666,7 @@
                 Привет! Я <span class="highlight">Кирилл</span>, 22 года, из Иваново.
                 Катаю в Tanks Blitz на ПК и Android. Люблю весёлые катки, нестандартные тактики
                 и хорошую компанию в чате. Стримлю по настроению, но всегда стараюсь
-                предупредить заранее в VK-паблике. Заходи на стрим — будет весело!
+                предупредить заранее. Заходи на стрим — будет весело!
             </p>
             <div class="social-buttons">
                 <a href="https://vk.com/club197885202" class="btn-social btn-vk" target="_blank">
@@ -665,6 +727,17 @@
         function shareTG() {
             window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank');
         }
+
+        // Настроение
+        const moods = [
+            'Сегодня в ударе',
+            'Танки в порядке, я тоже',
+            'Настроение: боевое',
+            'Готов нагибать',
+            'Сегодня без нервов'
+        ];
+        const mood = moods[Math.floor(Math.random() * moods.length)];
+        document.getElementById('mood').textContent = mood;
 
         // Цитата дня
         const quotes = [
