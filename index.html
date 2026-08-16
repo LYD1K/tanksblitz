@@ -259,8 +259,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             transition: border-color 0.3s, box-shadow 0.3s;
             min-height: 180px;
-            text-decoration: none;
-            display: block;
         }
 
         .h-card:hover {
@@ -669,30 +667,11 @@
             </div>
         </div>
 
-        <!-- Секция: Новости -->
+        <!-- Секция: Новости (из Google Таблицы) -->
         <div class="section" id="news">
             <div class="section-title">Новости</div>
-            <div class="h-scroll">
-                <div class="h-card">
-                    <div class="news-date">16 августа 2026</div>
-                    <div class="news-title">Сайт запущен</div>
-                    <div class="news-text">Теперь у меня есть свой уголок в интернете.</div>
-                </div>
-                <div class="h-card">
-                    <div class="news-date">16 августа 2026</div>
-                    <div class="news-title">Стримы по настроению</div>
-                    <div class="news-text">Подпишись на Telegram, чтобы не пропустить.</div>
-                </div>
-                <div class="h-card">
-                    <div class="news-date">15 августа 2026</div>
-                    <div class="news-title">Записи стримов добавлены</div>
-                    <div class="news-text">Теперь можно посмотреть последние эфиры.</div>
-                </div>
-                <div class="h-card">
-                    <div class="news-date">Скоро</div>
-                    <div class="news-title">Игры с подписчиками</div>
-                    <div class="news-text">Планирую собрать пати из зрителей.</div>
-                </div>
+            <div class="h-scroll" id="news-container">
+                <!-- Новости загрузятся автоматически -->
             </div>
         </div>
 
@@ -778,5 +757,45 @@
             LYD1K • Tanks Blitz
         </div>
     </div>
+
+    <script>
+        // Функция загрузки новостей из Google Таблицы
+        async function loadNews() {
+            const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?output=csv';
+            
+            try {
+                const response = await fetch(csvUrl);
+                const data = await response.text();
+                const rows = data.split('\n').filter(row => row.trim());
+                
+                const newsContainer = document.getElementById('news-container');
+                
+                // Пропускаем заголовок (первая строка)
+                for (let i = 1; i < rows.length; i++) {
+                    const cols = rows[i].split(',');
+                    if (cols.length >= 3) {
+                        const date = cols[0].trim();
+                        const title = cols[1].trim();
+                        const text = cols[2].trim();
+                        
+                        const card = document.createElement('div');
+                        card.className = 'h-card';
+                        card.innerHTML = `
+                            <div class="news-date">${date}</div>
+                            <div class="news-title">${title}</div>
+                            <div class="news-text">${text}</div>
+                        `;
+                        newsContainer.appendChild(card);
+                    }
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки новостей:', error);
+                document.getElementById('news-container').innerHTML = '<div class="h-card"><div class="news-text">Не удалось загрузить новости</div></div>';
+            }
+        }
+
+        // Загружаем новости при открытии
+        loadNews();
+    </script>
 </body>
 </html>
