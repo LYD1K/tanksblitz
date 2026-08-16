@@ -251,17 +251,35 @@
             font-weight: bold;
         }
 
-        /* Счётчик просмотров */
-        .counter {
+        /* Сменяющиеся фразы */
+        .rotating-text {
             text-align: center;
             margin-top: 20px;
-            font-size: 0.85rem;
-            color: #6b7a8a;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .counter img {
-            display: block;
-            margin: 0 auto;
+        .rotating-phrase {
+            font-size: 0.9rem;
+            color: #8b98a5;
+            animation: phraseFade 9s infinite;
+            opacity: 0;
+        }
+
+        .rotating-phrase:nth-child(2) {
+            animation-delay: 3s;
+        }
+
+        .rotating-phrase:nth-child(3) {
+            animation-delay: 6s;
+        }
+
+        @keyframes phraseFade {
+            0%, 100% { opacity: 0; transform: translateY(5px); }
+            10%, 30% { opacity: 1; transform: translateY(0); }
+            40% { opacity: 0; transform: translateY(-5px); }
         }
 
         /* Подвал */
@@ -372,9 +390,11 @@
             </div>
         </div>
 
-        <!-- Счётчик просмотров -->
-        <div class="counter">
-            <img src="https://counter6.optistats.ovh/private/freecounterstat.php?c=4t3k2p1m8n5b7s9" alt="Счётчик просмотров">
+        <!-- Сменяющиеся фразы -->
+        <div class="rotating-text">
+            <span class="rotating-phrase">Танки. Фан. Ночные стримы.</span>
+            <span class="rotating-phrase">Без расписания, зато с душой.</span>
+            <span class="rotating-phrase">По фану. Без понтов.</span>
         </div>
 
         <!-- Подвал -->
