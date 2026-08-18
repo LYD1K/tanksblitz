@@ -86,7 +86,7 @@
             font-weight: 500;
             padding: 5px 10px;
             border-radius: 6px;
-            transition: color 0.3s;
+            transition: color 0.3s, background 0.3s;
         }
 
         body.light .nav-link { color: #555; }
@@ -96,18 +96,23 @@
             background: rgba(232, 168, 124, 0.1);
         }
 
+        .nav-link.active {
+            color: #e8a87c;
+            background: rgba(232, 168, 124, 0.15);
+        }
+
         .nav-status {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             font-size: 0.8rem;
             color: #8b98a5;
             padding: 5px 10px;
         }
 
         .nav-dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: #6b7280;
             flex-shrink: 0;
@@ -116,7 +121,13 @@
 
         .nav-dot.online {
             background: #4ade80;
-            box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.6); }
+            50% { box-shadow: 0 0 15px rgba(74, 222, 128, 1); }
         }
 
         .theme-btn {
@@ -274,6 +285,13 @@
         .section { margin-bottom: 50px; }
         .section-title { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 20px; }
         body.light .section-title { color: #333; }
+
+        .section-subtitle {
+            font-size: 0.75rem;
+            color: #6b7a8a;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
 
         /* Ленты */
         .h-scroll {
@@ -463,7 +481,7 @@
 
         .tank-img {
             width: 100%;
-            height: auto;
+            height: 150px;
             max-height: 150px;
             object-fit: contain;
             margin-bottom: 10px;
@@ -616,6 +634,49 @@
             font-size: 0.75rem;
             color: #6b7a8a;
             text-align: center;
+        }
+
+        /* Модалка доната */
+        .donate-modal .modal {
+            text-align: center;
+        }
+
+        .donate-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #e8a87c;
+            margin-bottom: 10px;
+        }
+
+        .donate-text {
+            font-size: 0.9rem;
+            color: #aeb8c2;
+            margin-bottom: 20px;
+        }
+
+        .donate-amount {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #e8a87c;
+            margin-bottom: 20px;
+        }
+
+        .btn-donate-modal {
+            display: block;
+            background: #f2a33c;
+            color: #1b1e21;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-donate-modal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(242, 163, 60, 0.4);
         }
 
         /* Таблица */
@@ -794,6 +855,7 @@
                 gap: 10px;
             }
             .tank-img {
+                height: 120px;
                 max-height: 120px;
             }
         }
@@ -860,13 +922,14 @@
                 Поддержи стрим — хватит на дошик. Или на прем-танк.
             </p>
             <div class="social-buttons">
-                <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank">Донат</a>
+                <button class="btn-social btn-donate" onclick="openDonateModal()">Донат</button>
             </div>
         </div>
 
         <!-- Новости -->
         <div class="section" id="news">
             <div class="section-title">Новости</div>
+            <div class="section-subtitle" id="news-time"></div>
             <div class="h-scroll" id="news-container"></div>
         </div>
 
@@ -977,7 +1040,7 @@
             <div class="footer-social">
                 <a href="https://vk.com/club197885202" class="btn-social btn-vk" target="_blank" style="flex: 0 0 auto; min-width: auto; padding: 10px 20px;">VK</a>
                 <a href="https://t.me/icybasya" class="btn-social btn-tg" target="_blank" style="flex: 0 0 auto; min-width: auto; padding: 10px 20px;">TG</a>
-                <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-social btn-donate" target="_blank" style="flex: 0 0 auto; min-width: auto; padding: 10px 20px;">Донат</a>
+                <button class="btn-social btn-donate" onclick="openDonateModal()" style="flex: 0 0 auto; min-width: auto; padding: 10px 20px;">Донат</button>
             </div>
             <div class="rotating-text">
                 <span class="rotating-phrase">Танки. Фан. Ночные стримы.</span>
@@ -993,7 +1056,7 @@
     <!-- Кнопка наверх -->
     <button class="btn-top" id="btnTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">▲</button>
 
-    <!-- Модальное окно -->
+    <!-- Модальное окно танка -->
     <div class="modal-overlay" id="tankModal">
         <div class="modal">
             <button class="modal-close" onclick="closeTankModal()">✕</button>
@@ -1002,6 +1065,17 @@
             <img src="" alt="" class="modal-img" id="modalImg">
             <div class="modal-stats" id="modalStats"></div>
             <div class="modal-note">*Характеристики могут отличаться в зависимости от оборудования</div>
+        </div>
+    </div>
+
+    <!-- Модальное окно доната -->
+    <div class="modal-overlay donate-modal" id="donateModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeDonateModal()">✕</button>
+            <div class="donate-title">Поддержать</div>
+            <p class="donate-text">Даже на дошик буду рад.<br>Или на прем-танк. Как пойдёт.</p>
+            <div class="donate-amount">₽</div>
+            <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-donate-modal" target="_blank">Перейти к донату</a>
         </div>
     </div>
 
@@ -1104,9 +1178,25 @@
             document.getElementById('tankModal').classList.remove('active');
         }
 
+        function openDonateModal() {
+            document.body.style.overflow = 'hidden';
+            document.getElementById('donateModal').classList.add('active');
+        }
+
+        function closeDonateModal() {
+            document.body.style.overflow = '';
+            document.getElementById('donateModal').classList.remove('active');
+        }
+
         document.getElementById('tankModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeTankModal();
+            }
+        });
+
+        document.getElementById('donateModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDonateModal();
             }
         });
 
@@ -1174,6 +1264,27 @@
             scrollObserver.observe(el);
         });
 
+        // Подсветка активного пункта меню
+        const sections = document.querySelectorAll('.section, .card.full-width, .grid');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
         async function loadNews() {
             const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=0&single=true&output=csv&_=' + Date.now();
             try {
@@ -1194,6 +1305,8 @@
                         container.appendChild(card);
                     }
                 }
+                const now = new Date();
+                document.getElementById('news-time').textContent = 'Обновлено: ' + now.toLocaleString('ru-RU');
             } catch(e) {
                 document.getElementById('news-container').innerHTML = '<div class="h-card"><div class="news-text">Не удалось загрузить новости</div></div>';
             }
