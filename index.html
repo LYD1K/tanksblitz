@@ -433,6 +433,7 @@
             padding: 15px;
             text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         body.light .tank-card {
@@ -468,6 +469,118 @@
 
         body.light .tank-name {
             color: #333;
+        }
+
+        /* Модальное окно */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #26292e;
+            border: 1px solid #3a4048;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 100%;
+            padding: 25px;
+            position: relative;
+            animation: modalIn 0.3s ease-out;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        body.light .modal {
+            background: #fff;
+            border-color: #ddd;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #8b98a5;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #e8a87c;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #e8a87c;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .modal-img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .modal-stats {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .modal-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(27, 31, 36, 0.6);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        body.light .modal-stat {
+            background: #f5f5f5;
+        }
+
+        .modal-stat-label {
+            color: #8b98a5;
+        }
+
+        .modal-stat-value {
+            font-weight: 600;
+            color: #c7d5e0;
+        }
+
+        body.light .modal-stat-value {
+            color: #333;
+        }
+
+        .modal-note {
+            font-size: 0.75rem;
+            color: #6b7a8a;
+            text-align: center;
         }
 
         /* Таблица */
@@ -732,23 +845,23 @@
         <div class="section" id="tanks">
             <div class="section-title">Моя техника</div>
             <div class="tank-grid">
-                <div class="tank-card">
+                <div class="tank-card" onclick="openTankModal('CS-63')">
                     <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/Pl21_CS_63.png" alt="CS-63" class="tank-img">
                     <div class="tank-name">CS-63</div>
                 </div>
-                <div class="tank-card">
+                <div class="tank-card" onclick="openTankModal('AMX M4 Mle.')">
                     <img src="https://eu-wotp.wgcdn.co/dcont/tankopedia_images/f82_amx_m4_mle1949_ter/f82_amx_m4_mle1949_ter_image_resized.png" alt="AMX M4 Mle." class="tank-img">
                     <div class="tank-name">AMX M4 Mle.</div>
                 </div>
-                <div class="tank-card">
+                <div class="tank-card" onclick="openTankModal('Т-62А')">
                     <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/R87_T62A.png" alt="Т-62А" class="tank-img">
                     <div class="tank-name">Т-62А</div>
                 </div>
-                <div class="tank-card">
-                    <img src="https://static.wikia.nocookie.net/wot-blitz5232/images/7/73/M60_In-Game_Icon.png/revision/latest?cb=20240927145649" alt="М-60" class="tank-img">
+                <div class="tank-card" onclick="openTankModal('М-60')">
+                    <img src="https://static.wikia.nocookie.net/wot-blitz5232/images/7/73/M60_In-Game_Icon.png" alt="М-60" class="tank-img">
                     <div class="tank-name">М-60</div>
                 </div>
-                <div class="tank-card">
+                <div class="tank-card" onclick="openTankModal('Grille 15')">
                     <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/G121_Grille_15_L63.png" alt="Grille 15" class="tank-img">
                     <div class="tank-name">Grille 15</div>
                 </div>
@@ -839,7 +952,114 @@
     <!-- Кнопка наверх -->
     <button class="btn-top" id="btnTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">▲</button>
 
+    <!-- Модальное окно -->
+    <div class="modal-overlay" id="tankModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeTankModal()">✕</button>
+            <div class="modal-title" id="modalTitle"></div>
+            <img src="" alt="" class="modal-img" id="modalImg">
+            <div class="modal-stats" id="modalStats"></div>
+            <div class="modal-note">*Характеристики могут отличаться в зависимости от оборудования</div>
+        </div>
+    </div>
+
     <script>
+        // Данные танков
+        const tanksData = {
+            'CS-63': {
+                img: 'https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/Pl21_CS_63.png',
+                stats: {
+                    'Прочность': '2 120 ед.',
+                    'Урон в минуту': '3 727 ед.',
+                    'Средний урон': '340 ед.',
+                    'Макс. скорость': '56 км/ч',
+                    'Обзор': '313.6 м',
+                    'Башня (лоб/борт/корма)': '115 / 100 / 50',
+                    'Корпус (лоб/борт/корма)': '60 / 55 / 40'
+                }
+            },
+            'AMX M4 Mle.': {
+                img: 'https://eu-wotp.wgcdn.co/dcont/tankopedia_images/f82_amx_m4_mle1949_ter/f82_amx_m4_mle1949_ter_image_resized.png',
+                stats: {
+                    'Прочность': '2 491 ед.',
+                    'Урон в минуту': '2 788 ед.',
+                    'Средний урон': '450 ед.',
+                    'Макс. скорость': '35 км/ч',
+                    'Обзор': '282.5 м',
+                    'Башня (лоб/борт/корма)': '300 / 80 / 60',
+                    'Корпус (лоб/борт/корма)': '170 / 100 / 60'
+                }
+            },
+            'Т-62А': {
+                img: 'https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/R87_T62A.png',
+                stats: {
+                    'Прочность': '1 900 ед.',
+                    'Урон в минуту': '3 458 ед.',
+                    'Средний урон': '330 ед.',
+                    'Макс. скорость': '55 км/ч',
+                    'Обзор': '302.0 м',
+                    'Башня (лоб/борт/корма)': '245 / 161 / 65',
+                    'Корпус (лоб/борт/корма)': '134 / 78 / 47'
+                }
+            },
+            'М-60': {
+                img: 'https://static.wikia.nocookie.net/wot-blitz5232/images/7/73/M60_In-Game_Icon.png',
+                stats: {
+                    'Прочность': '2 014 ед.',
+                    'Урон в минуту': '3 513 ед.',
+                    'Средний урон': '350 ед.',
+                    'Макс. скорость': '52 км/ч',
+                    'Обзор': '313.6 м',
+                    'Башня (лоб/борт/корма)': '200 / 80 / 53',
+                    'Корпус (лоб/борт/корма)': '121 / 89 / 27'
+                }
+            },
+            'Grille 15': {
+                img: 'https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/G121_Grille_15_L63.png',
+                stats: {
+                    'Прочность': '1 961 ед.',
+                    'Урон в минуту': '3 573 ед.',
+                    'Средний урон': '600 ед.',
+                    'Макс. скорость': '55 км/ч',
+                    'Обзор': '250.3 м',
+                    'Бронирование (лоб/борт/корма)': '75 / 16 / 20'
+                }
+            }
+        };
+
+        function openTankModal(name) {
+            const data = tanksData[name];
+            if (!data) return;
+            
+            document.getElementById('modalTitle').textContent = name;
+            document.getElementById('modalImg').src = data.img;
+            
+            const statsContainer = document.getElementById('modalStats');
+            statsContainer.innerHTML = '';
+            
+            for (const [label, value] of Object.entries(data.stats)) {
+                const stat = document.createElement('div');
+                stat.className = 'modal-stat';
+                stat.innerHTML = `
+                    <span class="modal-stat-label">${label}</span>
+                    <span class="modal-stat-value">${value}</span>
+                `;
+                statsContainer.appendChild(stat);
+            }
+            
+            document.getElementById('tankModal').classList.add('active');
+        }
+
+        function closeTankModal() {
+            document.getElementById('tankModal').classList.remove('active');
+        }
+
+        document.getElementById('tankModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTankModal();
+            }
+        });
+
         function toggleTheme() {
             document.body.classList.toggle('light');
             const btn = document.querySelector('.theme-btn');
