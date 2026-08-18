@@ -434,6 +434,20 @@
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+        }
+
+        .tank-card.favorite {
+            border-color: #e8a87c;
+            box-shadow: 0 0 15px rgba(232, 168, 124, 0.3);
+        }
+
+        .favorite-star {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #e8a87c;
+            font-size: 1.2rem;
         }
 
         body.light .tank-card {
@@ -469,6 +483,16 @@
 
         body.light .tank-name {
             color: #333;
+        }
+
+        .tank-type {
+            font-size: 0.75rem;
+            color: #8b98a5;
+            margin-top: 4px;
+        }
+
+        body.light .tank-type {
+            color: #888;
         }
 
         /* Модальное окно */
@@ -534,8 +558,15 @@
             font-size: 1.2rem;
             font-weight: 700;
             color: #e8a87c;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
             text-align: center;
+        }
+
+        .modal-type {
+            font-size: 0.8rem;
+            color: #8b98a5;
+            text-align: center;
+            margin-bottom: 15px;
         }
 
         .modal-img {
@@ -803,7 +834,7 @@
             <div class="status-indicator offline" id="status-indicator"></div>
             <div>
                 <div class="status-text" id="status-text">Сейчас оффлайн</div>
-                <div class="status-time">Последний стрим: 15 августа 2026</div>
+                <div class="status-time">Стримов пока не было</div>
             </div>
         </div>
 
@@ -845,25 +876,31 @@
         <div class="section" id="tanks">
             <div class="section-title">Моя техника</div>
             <div class="tank-grid">
-                <div class="tank-card" onclick="openTankModal('CS-63')">
+                <div class="tank-card favorite" onclick="openTankModal('CS-63')">
+                    <span class="favorite-star">★</span>
                     <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/Pl21_CS_63.png" alt="CS-63" class="tank-img">
                     <div class="tank-name">CS-63</div>
+                    <div class="tank-type">СТ</div>
                 </div>
                 <div class="tank-card" onclick="openTankModal('AMX M4 Mle.')">
                     <img src="https://eu-wotp.wgcdn.co/dcont/tankopedia_images/f82_amx_m4_mle1949_ter/f82_amx_m4_mle1949_ter_image_resized.png" alt="AMX M4 Mle." class="tank-img">
                     <div class="tank-name">AMX M4 Mle.</div>
+                    <div class="tank-type">ТТ</div>
                 </div>
                 <div class="tank-card" onclick="openTankModal('Т-62А')">
                     <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/R87_T62A.png" alt="Т-62А" class="tank-img">
                     <div class="tank-name">Т-62А</div>
+                    <div class="tank-type">СТ</div>
                 </div>
                 <div class="tank-card" onclick="openTankModal('М-60')">
                     <img src="https://static.wikia.nocookie.net/wot-blitz5232/images/7/73/M60_In-Game_Icon.png" alt="М-60" class="tank-img">
                     <div class="tank-name">М-60</div>
+                    <div class="tank-type">СТ</div>
                 </div>
                 <div class="tank-card" onclick="openTankModal('Grille 15')">
                     <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/G121_Grille_15_L63.png" alt="Grille 15" class="tank-img">
                     <div class="tank-name">Grille 15</div>
+                    <div class="tank-type">ПТ-САУ</div>
                 </div>
             </div>
         </div>
@@ -957,6 +994,7 @@
         <div class="modal">
             <button class="modal-close" onclick="closeTankModal()">✕</button>
             <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-type" id="modalType"></div>
             <img src="" alt="" class="modal-img" id="modalImg">
             <div class="modal-stats" id="modalStats"></div>
             <div class="modal-note">*Характеристики могут отличаться в зависимости от оборудования</div>
@@ -967,6 +1005,7 @@
         // Данные танков
         const tanksData = {
             'CS-63': {
+                type: 'СТ',
                 img: 'https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/Pl21_CS_63.png',
                 stats: {
                     'Прочность': '2 120 ед.',
@@ -979,6 +1018,7 @@
                 }
             },
             'AMX M4 Mle.': {
+                type: 'ТТ',
                 img: 'https://eu-wotp.wgcdn.co/dcont/tankopedia_images/f82_amx_m4_mle1949_ter/f82_amx_m4_mle1949_ter_image_resized.png',
                 stats: {
                     'Прочность': '2 491 ед.',
@@ -991,6 +1031,7 @@
                 }
             },
             'Т-62А': {
+                type: 'СТ',
                 img: 'https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/R87_T62A.png',
                 stats: {
                     'Прочность': '1 900 ед.',
@@ -1003,6 +1044,7 @@
                 }
             },
             'М-60': {
+                type: 'СТ',
                 img: 'https://static.wikia.nocookie.net/wot-blitz5232/images/7/73/M60_In-Game_Icon.png',
                 stats: {
                     'Прочность': '2 014 ед.',
@@ -1015,6 +1057,7 @@
                 }
             },
             'Grille 15': {
+                type: 'ПТ-САУ',
                 img: 'https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/G121_Grille_15_L63.png',
                 stats: {
                     'Прочность': '1 961 ед.',
@@ -1032,6 +1075,7 @@
             if (!data) return;
             
             document.getElementById('modalTitle').textContent = name;
+            document.getElementById('modalType').textContent = data.type;
             document.getElementById('modalImg').src = data.img;
             
             const statsContainer = document.getElementById('modalStats');
