@@ -31,11 +31,55 @@
             min-height: 100vh;
             animation: fadeIn 0.6s ease-out;
             transition: background 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Анимированные частицы */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(232, 168, 124, 0.3);
+            border-radius: 50%;
+            animation: floatParticle 20s infinite linear;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(50px);
+                opacity: 0;
+            }
         }
 
         body.light {
             background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 50%, #f0f0f0 100%);
             color: #333333;
+        }
+
+        body.light .particle {
+            background: rgba(200, 140, 100, 0.2);
         }
 
         @keyframes fadeIn {
@@ -48,6 +92,8 @@
             width: 100%;
             margin: 0 auto;
             padding: 40px 20px;
+            position: relative;
+            z-index: 1;
         }
 
         /* Меню */
@@ -73,7 +119,7 @@
             max-width: 1100px;
             margin: 0 auto;
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
             align-items: center;
@@ -207,11 +253,25 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             transition: box-shadow 0.4s ease, transform 0.3s;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            overflow: hidden;
         }
 
         .logo:hover {
             transform: scale(1.03);
             box-shadow: 0 0 25px rgba(232, 168, 124, 0.5), 0 12px 28px rgba(0,0,0,0.4);
+        }
+
+        .logo.burst {
+            animation: burst 0.5s ease-out;
+        }
+
+        @keyframes burst {
+            0% { transform: scale(1); box-shadow: 0 0 0 rgba(232, 168, 124, 0.5); }
+            50% { transform: scale(1.2); box-shadow: 0 0 40px rgba(232, 168, 124, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
         }
 
         body.light .logo {
@@ -275,6 +335,24 @@
 
         body.light .btn-copy:hover {
             background: #f0f0f0;
+        }
+
+        /* Уведомление о стриме */
+        .stream-notification {
+            background: rgba(232, 168, 124, 0.1);
+            border: 1px solid rgba(232, 168, 124, 0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #e8a87c;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .stream-notification.visible {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
         }
 
         /* Цитата дня */
@@ -423,11 +501,16 @@
             transition: background 0.5s ease, border-color 0.3s, opacity 0.6s ease-out, transform 0.6s ease-out;
             opacity: 0;
             transform: translateY(20px);
+            will-change: transform;
         }
 
         .card.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .card.tilt {
+            transition: background 0.5s ease, border-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         body.light .card { background: #fff; border-color: #ddd; }
@@ -488,6 +571,49 @@
 
         /* Иконки */
         .icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+        /* Опрос */
+        .poll-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .poll-btn {
+            padding: 10px 16px;
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 10px;
+            color: #c7d5e0;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .poll-btn:hover {
+            background: #3a4048;
+            border-color: #4a5058;
+        }
+
+        .poll-btn.voted {
+            background: #e8a87c;
+            color: #1b1e21;
+            border-color: #e8a87c;
+        }
+
+        body.light .poll-btn {
+            background: #fff;
+            border-color: #ddd;
+            color: #333;
+        }
+
+        .poll-result {
+            font-size: 0.85rem;
+            color: #8b98a5;
+            margin-top: 10px;
+        }
 
         /* Соцсети */
         .social-grid {
@@ -589,6 +715,42 @@
             color: #6b7a8a;
             margin-top: 15px;
             font-style: italic;
+        }
+
+        /* Цели */
+        .goal-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .goal-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #c7d5e0;
+        }
+
+        body.light .goal-item {
+            background: #fff;
+            border-color: #ddd;
+            color: #333;
+        }
+
+        .goal-check {
+            color: #4ade80;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .goal-pending {
+            color: #8b98a5;
+            flex-shrink: 0;
         }
 
         /* Сетка танков */
@@ -1031,14 +1193,19 @@
     </style>
 </head>
 <body>
+    <!-- Частицы фона -->
+    <div class="particles" id="particles"></div>
+
     <!-- Меню -->
     <div class="nav">
         <div class="nav-links">
             <a href="#main" class="nav-link">Главное</a>
             <a href="#news" class="nav-link">Новости</a>
             <a href="#streams" class="nav-link">Стримы</a>
+            <a href="#poll" class="nav-link">Опрос</a>
             <a href="#tanks" class="nav-link">Танки</a>
             <a href="#achievements" class="nav-link">Достижения</a>
+            <a href="#goals" class="nav-link">Цели</a>
             <a href="#faq" class="nav-link">FAQ</a>
             <a href="#about" class="nav-link">Обо мне</a>
             <span class="nav-status">
@@ -1052,9 +1219,14 @@
     </div>
 
     <div class="container" id="main">
+        <!-- Уведомление о стриме -->
+        <div class="stream-notification" id="streamNotification">
+            📢 Сегодня стрим в 21:00 МСК!
+        </div>
+
         <!-- Шапка -->
         <div class="header">
-            <div class="logo">L</div>
+            <div class="logo" id="logo">L</div>
             <div class="clan">[LYD1K]</div>
             <div class="nickname">2200153687779711</div>
             <div class="subtitle">Tanks Blitz • Стример</div>
@@ -1115,6 +1287,20 @@
             <div class="h-scroll" id="streams-container"></div>
         </div>
 
+        <!-- Опрос -->
+        <div class="section" id="poll">
+            <div class="section-title">Опрос</div>
+            <div class="card full-width" style="margin-bottom: 0;">
+                <div class="card-title">Какой стрим хочешь?</div>
+                <div class="poll-options">
+                    <button class="poll-btn" onclick="votePoll(this, 'Фан-катки')">Фан-катки</button>
+                    <button class="poll-btn" onclick="votePoll(this, 'Нагиб на технике')">Нагиб на технике</button>
+                    <button class="poll-btn" onclick="votePoll(this, 'Игры с подписчиками')">Игры с подписчиками</button>
+                </div>
+                <div class="poll-result" id="pollResult"></div>
+            </div>
+        </div>
+
         <!-- Достижения -->
         <div class="section" id="achievements">
             <div class="section-title">Достижения</div>
@@ -1171,7 +1357,18 @@
             </div>
         </div>
 
-        <!-- Мои соцсети -->
+        <!-- Цели -->
+        <div class="section" id="goals">
+            <div class="section-title">Цели</div>
+            <div class="goal-list">
+                <div class="goal-item"><span class="goal-check">✅</span> Сайт запущен</div>
+                <div class="goal-item"><span class="goal-check">✅</span> Стримы на VK Play</div>
+                <div class="goal-item"><span class="goal-pending">⏳</span> Набрать аудиторию</div>
+                <div class="goal-item"><span class="goal-pending">⏳</span> Регулярные стримы</div>
+            </div>
+        </div>
+
+        <!-- Соцсети -->
         <div class="section" id="socials">
             <div class="section-title">Мои соцсети</div>
             <div class="social-grid">
@@ -1252,7 +1449,9 @@
                 <a href="#main" class="footer-link">Главное</a>
                 <a href="#news" class="footer-link">Новости</a>
                 <a href="#streams" class="footer-link">Стримы</a>
+                <a href="#poll" class="footer-link">Опрос</a>
                 <a href="#achievements" class="footer-link">Достижения</a>
+                <a href="#goals" class="footer-link">Цели</a>
                 <a href="#faq" class="footer-link">FAQ</a>
                 <a href="#about" class="footer-link">Обо мне</a>
             </div>
@@ -1366,6 +1565,53 @@
                 }
             }
         };
+
+        // Создание частиц
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 15) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Анимация логотипа
+        document.getElementById('logo').addEventListener('click', function() {
+            this.classList.add('burst');
+            setTimeout(() => {
+                this.classList.remove('burst');
+            }, 500);
+        });
+
+        // Опрос
+        function votePoll(btn, option) {
+            const buttons = document.querySelectorAll('.poll-btn');
+            buttons.forEach(b => b.classList.remove('voted'));
+            btn.classList.add('voted');
+            document.getElementById('pollResult').textContent = 'Спасибо за голос! Учту 😉';
+        }
+
+        // 3D-эффект
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / centerY * 3;
+                const rotateY = (centerX - x) / centerX * 3;
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
 
         function copyText(text, btn) {
             navigator.clipboard.writeText(text).then(() => {
@@ -1514,6 +1760,15 @@
             });
         });
 
+        // Автообновление статуса (проверка раз в 30 секунд)
+        function checkStatus() {
+            // Здесь можно вставить запрос к API или таблице
+            // Пока просто имитация
+            console.log('Статус проверен');
+        }
+
+        setInterval(checkStatus, 30000);
+
         async function loadNews() {
             const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0m6mVaXpzCmzXjtmHSXzRATckqIb3KJEase1rFnlWWutBDdqfTeAYVBhY26On78EAhH4ORL5uI-5C/pub?gid=0&single=true&output=csv&_=' + Date.now();
             try {
@@ -1585,6 +1840,8 @@
             }
         });
 
+        // Запуск
+        createParticles();
         loadNews();
         loadStreams();
     </script>
