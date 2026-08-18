@@ -224,6 +224,42 @@
         .subtitle { font-size: 1rem; color: #6b7a8a; }
         body.light .subtitle { color: #888; }
 
+        /* Кнопки копирования */
+        .copy-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .btn-copy {
+            padding: 8px 14px;
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 8px;
+            color: #c7d5e0;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-copy:hover {
+            background: #3a4048;
+            border-color: #4a5058;
+        }
+
+        body.light .btn-copy {
+            background: #fff;
+            border-color: #ddd;
+            color: #333;
+        }
+
+        body.light .btn-copy:hover {
+            background: #f0f0f0;
+        }
+
         /* Цитата дня */
         .quote-day {
             text-align: center;
@@ -435,6 +471,56 @@
 
         /* Иконки */
         .icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+        /* Достижения */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .achievement-card {
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        body.light .achievement-card {
+            background: #fff;
+            border-color: #ddd;
+        }
+
+        .achievement-card:hover {
+            border-color: #e8a87c;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .achievement-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #e8a87c;
+            margin-bottom: 5px;
+        }
+
+        .achievement-desc {
+            font-size: 0.8rem;
+            color: #8b98a5;
+            line-height: 1.4;
+        }
+
+        body.light .achievement-desc {
+            color: #888;
+        }
 
         /* Сетка танков */
         .tank-grid {
@@ -858,6 +944,16 @@
                 height: 120px;
                 max-height: 120px;
             }
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+            .copy-buttons {
+                gap: 6px;
+            }
+            .btn-copy {
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
         }
     </style>
 </head>
@@ -869,6 +965,7 @@
             <a href="#news" class="nav-link">Новости</a>
             <a href="#streams" class="nav-link">Стримы</a>
             <a href="#tanks" class="nav-link">Танки</a>
+            <a href="#achievements" class="nav-link">Достижения</a>
             <a href="#faq" class="nav-link">FAQ</a>
             <a href="#about" class="nav-link">Обо мне</a>
             <span class="nav-status">
@@ -887,6 +984,11 @@
             <div class="clan">[LYD1K]</div>
             <div class="nickname">2200153687779711</div>
             <div class="subtitle">Tanks Blitz • Стример</div>
+            <div class="copy-buttons">
+                <button class="btn-copy" onclick="copyText('2200153687779711', this)">Скопировать ник</button>
+                <button class="btn-copy" onclick="copyText(window.location.href, this)">Скопировать ссылку</button>
+                <button class="btn-copy" onclick="copyText('https://vk.com/k.zernov', this)">Скопировать VK</button>
+            </div>
         </div>
 
         <!-- Цитата дня -->
@@ -937,6 +1039,28 @@
         <div class="section" id="streams">
             <div class="section-title">Записи стримов</div>
             <div class="h-scroll" id="streams-container"></div>
+        </div>
+
+        <!-- Достижения -->
+        <div class="section" id="achievements">
+            <div class="section-title">Достижения</div>
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <div class="achievement-name">Дивизион Лайт</div>
+                    <div class="achievement-desc">Участвовал в составе клана, дошли до топа среди кланов</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">⭐</div>
+                    <div class="achievement-name">Топ-100 РБ</div>
+                    <div class="achievement-desc">Несколько раз входил в сотню лучших игроков</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">💥</div>
+                    <div class="achievement-name">3к+ средний урон</div>
+                    <div class="achievement-desc">На 10+ уровне в последних сессиях</div>
+                </div>
+            </div>
         </div>
 
         <!-- Танки -->
@@ -1034,6 +1158,7 @@
                 <a href="#main" class="footer-link">Главное</a>
                 <a href="#news" class="footer-link">Новости</a>
                 <a href="#streams" class="footer-link">Стримы</a>
+                <a href="#achievements" class="footer-link">Достижения</a>
                 <a href="#faq" class="footer-link">FAQ</a>
                 <a href="#about" class="footer-link">Обо мне</a>
             </div>
@@ -1147,6 +1272,16 @@
                 }
             }
         };
+
+        function copyText(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const original = btn.textContent;
+                btn.textContent = 'Скопировано!';
+                setTimeout(() => {
+                    btn.textContent = original;
+                }, 1500);
+            });
+        }
 
         function openTankModal(name) {
             document.body.style.overflow = 'hidden';
