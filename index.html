@@ -169,6 +169,22 @@
             color: #333;
         }
 
+        .btn-donate-nav {
+            padding: 8px 14px;
+            background: #f2a33c;
+            color: #1b1e21;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-donate-nav:hover {
+            background: #f5b055;
+        }
+
         /* Шапка */
         .header {
             text-align: center;
@@ -243,6 +259,7 @@
             font-size: 0.85rem;
             font-weight: 600;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .btn-copy:hover {
@@ -472,6 +489,50 @@
         /* Иконки */
         .icon { width: 18px; height: 18px; flex-shrink: 0; }
 
+        /* Соцсети */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-card {
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        body.light .social-card {
+            background: #fff;
+            border-color: #ddd;
+        }
+
+        .social-card:hover {
+            border-color: #e8a87c;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .social-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #c7d5e0;
+        }
+
+        body.light .social-name {
+            color: #333;
+        }
+
         /* Достижения */
         .achievement-grid {
             display: grid;
@@ -520,6 +581,14 @@
 
         body.light .achievement-desc {
             color: #888;
+        }
+
+        .achievement-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6b7a8a;
+            margin-top: 15px;
+            font-style: italic;
         }
 
         /* Сетка танков */
@@ -932,9 +1001,10 @@
             .motto { font-size: 0.85rem; }
             .h-card, .media-card { flex: 0 0 250px; }
             .btn-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
-            .nav-links { gap: 8px; }
-            .nav-link { font-size: 0.8rem; padding: 4px 7px; }
-            .btn-write-nav { padding: 6px 10px; font-size: 0.75rem; }
+            .nav-links { gap: 6px; }
+            .nav-link { font-size: 0.75rem; padding: 4px 6px; }
+            .btn-write-nav { padding: 6px 10px; font-size: 0.7rem; }
+            .btn-donate-nav { padding: 6px 10px; font-size: 0.7rem; }
             .nav { position: relative; }
             .tank-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -947,12 +1017,15 @@
             .achievement-grid {
                 grid-template-columns: 1fr;
             }
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
             .copy-buttons {
                 gap: 6px;
             }
             .btn-copy {
-                font-size: 0.75rem;
-                padding: 6px 10px;
+                font-size: 0.7rem;
+                padding: 6px 8px;
             }
         }
     </style>
@@ -973,6 +1046,7 @@
                 <span id="nav-status-text">Оффлайн</span>
             </span>
             <a href="https://t.me/icybasya?text=Привет,%20LYD1K!%20Пишу%20с%20сайта." class="btn-write-nav" target="_blank">Написать</a>
+            <button class="btn-donate-nav" onclick="openDonateModal()">Поддержать</button>
             <button class="theme-btn" onclick="toggleTheme()">🌙</button>
         </div>
     </div>
@@ -1024,7 +1098,7 @@
                 Поддержи стрим — хватит на дошик. Или на прем-танк.
             </p>
             <div class="social-buttons">
-                <button class="btn-social btn-donate" onclick="openDonateModal()">Донат</button>
+                <button class="btn-social btn-donate" onclick="openDonateModal()">🧡 Донат</button>
             </div>
         </div>
 
@@ -1061,6 +1135,7 @@
                     <div class="achievement-desc">На 10+ уровне в последних сессиях</div>
                 </div>
             </div>
+            <div class="achievement-note">Было время — было дело</div>
         </div>
 
         <!-- Танки -->
@@ -1093,6 +1168,25 @@
                     <div class="tank-name">Grille 15</div>
                     <div class="tank-type">ПТ-САУ</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Мои соцсети -->
+        <div class="section" id="socials">
+            <div class="section-title">Мои соцсети</div>
+            <div class="social-grid">
+                <a href="https://vk.com/club197885202" class="social-card" target="_blank">
+                    <div class="social-icon">🔵</div>
+                    <div class="social-name">VK Паблик</div>
+                </a>
+                <a href="https://t.me/icybasya" class="social-card" target="_blank">
+                    <div class="social-icon">✈️</div>
+                    <div class="social-name">Telegram</div>
+                </a>
+                <a href="https://www.donationalerts.com/r/lublu_unii" class="social-card" target="_blank">
+                    <div class="social-icon">🧡</div>
+                    <div class="social-name">DonationAlerts</div>
+                </a>
             </div>
         </div>
 
@@ -1199,7 +1293,7 @@
             <button class="modal-close" onclick="closeDonateModal()">✕</button>
             <div class="donate-title">Поддержать</div>
             <p class="donate-text">Даже на дошик буду рад.<br>Или на прем-танк. Как пойдёт.</p>
-            <div class="donate-amount">₽</div>
+            <div class="donate-amount">🧡</div>
             <a href="https://www.donationalerts.com/r/lublu_unii" class="btn-donate-modal" target="_blank">Перейти к донату</a>
         </div>
     </div>
