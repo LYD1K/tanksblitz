@@ -35,7 +35,6 @@
             position: relative;
         }
 
-        /* Анимированные частицы */
         .particles {
             position: fixed;
             top: 0;
@@ -200,10 +199,6 @@
         .btn-write-nav:hover {
             background: #4a5058;
         }
-        body.light .btn-write-nav {
-            background: #e8e8e8;
-            color: #333;
-        }
 
         .btn-donate-nav {
             padding: 8px 14px;
@@ -254,13 +249,11 @@
             transition: box-shadow 0.4s ease, transform 0.3s;
             cursor: pointer;
             user-select: none;
-            position: relative;
-            overflow: hidden;
         }
 
         .logo:hover {
             transform: scale(1.03);
-            box-shadow: 0 0 25px rgba(232, 168, 124, 0.5), 0 12px 28px rgba(0,0,0,0.4);
+            box-shadow: 0 0 25px rgba(232, 168, 124, 0.5);
         }
 
         .logo.burst {
@@ -273,15 +266,7 @@
             100% { transform: scale(1); }
         }
 
-        body.light .logo {
-            background: #fff;
-            border-color: #ddd;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
         .clan { font-size: 1.2rem; color: #8b98a5; letter-spacing: 3px; margin-bottom: 8px; font-weight: 500; }
-        body.light .clan { color: #777; }
-
         .nickname {
             font-size: 2.5rem;
             font-weight: 900;
@@ -290,10 +275,7 @@
             font-family: 'Courier New', monospace;
             margin-bottom: 10px;
         }
-        body.light .nickname { color: #333; }
-
         .subtitle { font-size: 1rem; color: #6b7a8a; }
-        body.light .subtitle { color: #888; }
 
         /* Кнопки копирования */
         .copy-buttons {
@@ -319,13 +301,6 @@
 
         .btn-copy:hover {
             background: #3a4048;
-            border-color: #4a5058;
-        }
-
-        body.light .btn-copy {
-            background: #fff;
-            border-color: #ddd;
-            color: #333;
         }
 
         /* Уведомление о стриме */
@@ -362,16 +337,6 @@
             transition: all 0.3s;
         }
 
-        .quote-day:hover {
-            box-shadow: 0 0 20px rgba(232, 168, 124, 0.15);
-        }
-
-        body.light .quote-day {
-            background: #fff;
-            border-color: #ddd;
-            color: #d4885c;
-        }
-
         /* Девиз */
         .motto {
             text-align: center;
@@ -392,19 +357,26 @@
             gap: 15px;
         }
 
-        body.light .status-block { background: #fff; border-color: #ddd; }
-
         .status-indicator { width: 12px; height: 12px; border-radius: 50%; background: #6b7280; flex-shrink: 0; }
         .status-indicator.online { background: #4ade80; box-shadow: 0 0 10px rgba(74, 222, 128, 0.5); }
-
         .status-text { font-size: 1rem; font-weight: 600; color: #c7d5e0; }
-        body.light .status-text { color: #333; }
         .status-time { font-size: 0.85rem; color: #6b7a8a; }
 
         /* Секции */
         .section { margin-bottom: 50px; }
-        .section-title { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 20px; }
-        body.light .section-title { color: #333; }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         .section-subtitle {
             font-size: 0.75rem;
@@ -438,7 +410,7 @@
             min-height: 180px;
             transition: all 0.3s;
         }
-        body.light .h-card { background: #fff; border-color: #ddd; }
+
         .h-card:hover {
             border-color: #4a5058;
             box-shadow: 0 10px 28px rgba(0,0,0,0.35);
@@ -462,6 +434,7 @@
             min-height: 160px;
             transition: all 0.3s;
         }
+
         .media-card:hover {
             border-color: #4a5058;
             box-shadow: 0 10px 28px rgba(0,0,0,0.35);
@@ -495,9 +468,6 @@
             transform: translateY(0);
         }
 
-        body.light .card { background: #fff; border-color: #ddd; }
-        .card:hover { border-color: #4a5058; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-
         .card-title {
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -506,7 +476,6 @@
             margin-bottom: 20px;
             font-weight: 600;
         }
-        body.light .card-title { color: #888; }
 
         /* Кнопки */
         .btn-stream {
@@ -679,6 +648,55 @@
             transition: opacity 0.3s;
         }
         .tank-card:hover .tank-phrase { opacity: 1; }
+
+        /* Карусель */
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 15px;
+            transition: transform 0.5s ease;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(38, 41, 46, 0.9);
+            border: 1px solid #3a4048;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            color: #e8a87c;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-btn.prev { left: -10px; }
+        .carousel-btn.next { right: -10px; }
+
+        /* С чего начать */
+        .start-list { display: grid; gap: 10px; margin-top: 15px; }
+        .start-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(38, 41, 46, 0.85);
+            border: 1px solid #3a4048;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #c7d5e0;
+        }
+        .start-number {
+            color: #e8a87c;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
 
         /* Модалки */
         .modal-overlay {
@@ -880,6 +898,7 @@
             .social-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 6px; }
             .nav-link { font-size: 0.75rem; padding: 4px 6px; }
+            .carousel-btn { width: 30px; height: 30px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -895,6 +914,7 @@
             <a href="#tanks" class="nav-link">Танки</a>
             <a href="#achievements" class="nav-link">Достижения</a>
             <a href="#goals" class="nav-link">Цели</a>
+            <a href="#start" class="nav-link">С чего начать</a>
             <a href="#faq" class="nav-link">FAQ</a>
             <a href="#about" class="nav-link">Обо мне</a>
             <span class="nav-status">
@@ -951,6 +971,7 @@
             <p class="about-text" style="margin-bottom: 20px;">Поддержи стрим — хватит на дошик. Или на прем-танк.</p>
             <div class="social-buttons">
                 <button class="btn-social btn-donate" onclick="openDonateModal()">🧡 Донат</button>
+                <a href="https://vk.com/club197885202" class="btn-social btn-vk" target="_blank">Подписаться на VK</a>
             </div>
         </div>
 
@@ -1002,38 +1023,42 @@
 
         <div class="section" id="tanks">
             <div class="section-title">Моя техника</div>
-            <div class="tank-grid">
-                <div class="tank-card favorite" onclick="openTankModal('CS-63')">
-                    <span class="favorite-star">★</span>
-                    <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/Pl21_CS_63.png" alt="CS-63" class="tank-img">
-                    <div class="tank-name">CS-63</div>
-                    <div class="tank-type">СТ</div>
-                    <div class="tank-phrase">На этом нагибаю</div>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)">‹</button>
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="tank-card favorite" onclick="openTankModal('CS-63')">
+                        <span class="favorite-star">★</span>
+                        <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/Pl21_CS_63.png" alt="CS-63" class="tank-img">
+                        <div class="tank-name">CS-63</div>
+                        <div class="tank-type">СТ</div>
+                        <div class="tank-phrase">На этом нагибаю</div>
+                    </div>
+                    <div class="tank-card" onclick="openTankModal('AMX M4 Mle.')">
+                        <img src="https://eu-wotp.wgcdn.co/dcont/tankopedia_images/f82_amx_m4_mle1949_ter/f82_amx_m4_mle1949_ter_image_resized.png" alt="AMX M4 Mle." class="tank-img">
+                        <div class="tank-name">AMX M4 Mle.</div>
+                        <div class="tank-type">ТТ</div>
+                        <div class="tank-phrase">Броня решает</div>
+                    </div>
+                    <div class="tank-card" onclick="openTankModal('Т-62А')">
+                        <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/R87_T62A.png" alt="Т-62А" class="tank-img">
+                        <div class="tank-name">Т-62А</div>
+                        <div class="tank-type">СТ</div>
+                        <div class="tank-phrase">Классика</div>
+                    </div>
+                    <div class="tank-card" onclick="openTankModal('М-60')">
+                        <img src="https://static.wikia.nocookie.net/wot-blitz5232/images/7/73/M60_In-Game_Icon.png" alt="М-60" class="tank-img">
+                        <div class="tank-name">М-60</div>
+                        <div class="tank-type">СТ</div>
+                        <div class="tank-phrase">Редкий гость</div>
+                    </div>
+                    <div class="tank-card" onclick="openTankModal('Grille 15')">
+                        <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/G121_Grille_15_L63.png" alt="Grille 15" class="tank-img">
+                        <div class="tank-name">Grille 15</div>
+                        <div class="tank-type">ПТ-САУ</div>
+                        <div class="tank-phrase">Один выстрел — минус танк</div>
+                    </div>
                 </div>
-                <div class="tank-card" onclick="openTankModal('AMX M4 Mle.')">
-                    <img src="https://eu-wotp.wgcdn.co/dcont/tankopedia_images/f82_amx_m4_mle1949_ter/f82_amx_m4_mle1949_ter_image_resized.png" alt="AMX M4 Mle." class="tank-img">
-                    <div class="tank-name">AMX M4 Mle.</div>
-                    <div class="tank-type">ТТ</div>
-                    <div class="tank-phrase">Броня решает</div>
-                </div>
-                <div class="tank-card" onclick="openTankModal('Т-62А')">
-                    <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/R87_T62A.png" alt="Т-62А" class="tank-img">
-                    <div class="tank-name">Т-62А</div>
-                    <div class="tank-type">СТ</div>
-                    <div class="tank-phrase">Классика</div>
-                </div>
-                <div class="tank-card" onclick="openTankModal('М-60')">
-                    <img src="https://static.wikia.nocookie.net/wot-blitz5232/images/7/73/M60_In-Game_Icon.png" alt="М-60" class="tank-img">
-                    <div class="tank-name">М-60</div>
-                    <div class="tank-type">СТ</div>
-                    <div class="tank-phrase">Редкий гость</div>
-                </div>
-                <div class="tank-card" onclick="openTankModal('Grille 15')">
-                    <img src="https://dav-static.tanki.su/ptlru/mt/current/shop/vehicles/600x450/G121_Grille_15_L63.png" alt="Grille 15" class="tank-img">
-                    <div class="tank-name">Grille 15</div>
-                    <div class="tank-type">ПТ-САУ</div>
-                    <div class="tank-phrase">Один выстрел — минус танк</div>
-                </div>
+                <button class="carousel-btn next" onclick="moveCarousel(1)">›</button>
             </div>
         </div>
 
@@ -1044,6 +1069,16 @@
                 <div class="goal-item"><span class="goal-check">✅</span> Стримы на VK Play</div>
                 <div class="goal-item"><span class="goal-pending">⏳</span> Набрать аудиторию</div>
                 <div class="goal-item"><span class="goal-pending">⏳</span> Регулярные стримы</div>
+            </div>
+        </div>
+
+        <div class="section" id="start">
+            <div class="section-title">С чего начать</div>
+            <div class="start-list">
+                <div class="start-item"><span class="start-number">1.</span> Подпишись на VK-паблик — там анонсы стримов</div>
+                <div class="start-item"><span class="start-number">2.</span> Заходи на стрим по ссылке выше</div>
+                <div class="start-item"><span class="start-number">3.</span> Пиши в чат — отвечаю всем</div>
+                <div class="start-item"><span class="start-number">4.</span> Если понравилось — поддержи донатом 🧡</div>
             </div>
         </div>
 
@@ -1120,6 +1155,7 @@
                 <a href="#poll" class="footer-link">Опрос</a>
                 <a href="#achievements" class="footer-link">Достижения</a>
                 <a href="#goals" class="footer-link">Цели</a>
+                <a href="#start" class="footer-link">С чего начать</a>
                 <a href="#faq" class="footer-link">FAQ</a>
                 <a href="#about" class="footer-link">Обо мне</a>
             </div>
@@ -1263,6 +1299,18 @@
             setTimeout(() => this.classList.remove('burst'), 500);
         });
 
+        // Карусель
+        let carouselIndex = 0;
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselCards = carouselTrack.children.length;
+
+        function moveCarousel(direction) {
+            const cardWidth = carouselTrack.children[0].offsetWidth + 15;
+            const maxIndex = carouselCards - 1;
+            carouselIndex = Math.max(0, Math.min(maxIndex, carouselIndex + direction));
+            carouselTrack.style.transform = `translateX(-${carouselIndex * cardWidth}px)`;
+        }
+
         function votePoll(btn, option) {
             document.querySelectorAll('.poll-btn').forEach(b => b.classList.remove('voted'));
             btn.classList.add('voted');
@@ -1335,6 +1383,17 @@
             window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank');
         }
 
+        // Случайный совет
+        const advices = [
+            'Не стой под выстрелом',
+            'Свети, но не гори',
+            'Всегда ищи укрытие',
+            'Не жадничай на фраги',
+            'Следи за миникартой',
+            'Помогай союзникам'
+        ];
+        const advice = advices[Math.floor(Math.random() * advices.length)];
+
         const quotes = [
             'Танки не подведут, если не подведёшь ты',
             'Лучше один раз выиграть, чем сто раз подумать',
@@ -1342,14 +1401,12 @@
             'Без расписания, зато с душой',
             'Стримлю, когда танки зовут'
         ];
-        document.getElementById('quoteDay').textContent = '«' + quotes[Math.floor(Math.random() * quotes.length)] + '»';
+        document.getElementById('quoteDay').textContent = '«' + quotes[Math.floor(Math.random() * quotes.length)] + '» 💡 ' + advice;
 
-        // Счётчик дней
         const launchDate = new Date('2026-08-16');
         const days = Math.floor((Date.now() - launchDate) / (1000 * 60 * 60 * 24));
         document.getElementById('daysCounter').textContent = `Сайт работает уже ${days} дн.`;
 
-        // Анимация карточек
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1361,22 +1418,17 @@
 
         document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
-        // 3D-эффект
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const rotateX = (y - rect.height / 2) / rect.height * 3;
-                const rotateY = (rect.width / 2 - x) / rect.width * 3;
-                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        const titleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    titleObserver.unobserve(entry.target);
+                }
             });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-            });
-        });
+        }, { threshold: 0.1 });
 
-        // Подсветка меню
+        document.querySelectorAll('.section-title').forEach(title => titleObserver.observe(title));
+
         const sections = document.querySelectorAll('.section, .card.full-width, .grid');
         const navLinks = document.querySelectorAll('.nav-link');
 
@@ -1454,7 +1506,6 @@
             }
         });
 
-        // Автообновление статуса (заглушка)
         function checkStatus() {
             console.log('Статус проверен');
         }
